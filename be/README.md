@@ -27,6 +27,7 @@ Install dependencies
 ```bash
   pip install langchain
   pip install openai
+  pip install bs4
 ```
 
 Start the server
