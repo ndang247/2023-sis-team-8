@@ -1,4 +1,4 @@
-from sitemap import sitemap
+from be.webscraping.sitemap import sitemap
 import bs4 
 import requests
 import os
