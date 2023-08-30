@@ -24,6 +24,10 @@ Install dependencies
 ```bash
   pip install "uvicorn[standard]"
 ```
+```bash
+  pip install langchain
+  pip install openai
+```
 
 Start the server
 
