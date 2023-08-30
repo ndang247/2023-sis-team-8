@@ -28,6 +28,7 @@ Install dependencies
   pip install langchain
   pip install openai
   pip install bs4
+  pip install lxml
 ```
 
 Start the server
