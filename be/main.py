@@ -18,8 +18,24 @@ async def read_root():
 
 @app.post("/chat")
 async def send_message(message: Message):
+    now = datetime.now()
+
+    print(message.timeStamp)
+
     if(message.text == ""):
         raise HTTPException(status_code=400, detail="No message sent!")
+
+    """ Deal with different timezones? """
+    if(message.timeStamp > datetime.astimezone(now)):
+        raise HTTPException(
+            status_code=400, 
+            detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}"
+            .format(message.timeStamp.strftime('%Y-%m-%d %H:%M:%S.%f %Z'), 
+            now.strftime('%Y-%m-%d %H:%M:%S.%f')))
+    
+    if(len(message.text) > 1000):
+        raise HTTPException(status_code=400, detail="Message character limit exceeded: " + 
+        str(len(message.text)) + " characters provided!")
     
     answer = Answer(message=message, timeStamp=datetime.now())
 
