@@ -6,35 +6,39 @@ export default function UserChatLayout() {
     <>
       <div className="box-border m-auto flex flex-col min-h-screen justify-between items-center">
         <main className="flex-grow flex flex-row items-center justify-center mt-[20%]">
-          <div className="api-key-card">
-            <div className="save-button">
-              <div className="save">Save</div>
+          <div className="bg-white rounded-[14px] w-[494px] h-[480px] absolute left-1/2 transform -translate-x-1/2 top-[213px] shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-400 to-teal-400 rounded-full flex flex-row items-center justify-center w-[121px] h-[54px] absolute left-[333px] top-[189px] shadow-md overflow-hidden">
+              <div className="text-[#fff] text-left font-semibold text-[14px] leading-[16px] relative w-[34px] h-[20px]">
+                Save
+              </div>
             </div>
-            <div className="input2">
-              <div className="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+            <div className="bg-[#fff] rounded-full border-solid border-gray-300 border w-[283px] h-[54px] absolute left-[40px] top-[189px] overflow-hidden">
+              <div className="text-gray-500 text-left font-medium text-[14px] leading-[100%] absolute left-[20px] top-[18px]">
                 sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
               </div>
             </div>
-            <div className="title">Enter your OpenAI API Key</div>
-            <div className="body">
+            <div className="title text-[#1b2559] text-left font-bold text-[24px] leading-[100%] absolute">
+              Enter your OpenAI API Key
+            </div>
+            <div className="body text-[#718096] text-center font-medium text-[16px] leading-[28px] absolute w-[398px]">
               You need an OpenAI API Key to use Horizon Chat UI.
               <br />
               Your API Key is stored locally on your browser and never sent
               anywhere else.
             </div>
-            <div className="the-app-will-connect-to-open-ai-api-server-to-check-if-your-api-key-is-working-properly">
+            <div className="the-app-will-connect-to-open-ai-api-server-to-check-if-your-api-key-is-working-properly text-[#718096] text-center font-medium text-[14px] leading-[28px] absolute w-[352px]">
               *The app will connect to OpenAI API server to check if your API
               Key is working properly.
             </div>
-            <div className="get-your-api-key-from-open-ai-dashboard">
+            <div className="get-your-api-key-from-open-ai-dashboard text-[#603cff] text-center font-semibold text-[14px] leading-[28px] absolute">
               Get your API key from Open AI Dashboard
             </div>
-            <div className="your-api-key-is-not-working">
-              <div className="your-api-key-is-not-working2">
+            <div className="absolute inset-0">
+              <div className="your-api-key-is-not-working text-[#1b2559] text-center font-bold text-[16px] leading-[28px] absolute">
                 Your API Key is not working?
               </div>
               <svg
-                className="vector3"
+                className="vector3 absolute left-[362.31px] top-[323px] overflow-visible"
                 width="10"
                 height="6"
                 viewBox="0 0 10 6"
@@ -51,7 +55,7 @@ export default function UserChatLayout() {
 
           {/* Chat input */}
           <input
-            className="absolute border border-[#e2e8f0] rounded-full w-[494px] h-[54px] overflow-hidden left-1/2 transform -translate-x-[234px] bottom-[140px] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="absolute border border-[#e2e8f0] rounded-full w-[494px] h-[54px] overflow-hidden left-1/2 transform -translate-x-1/2 bottom-[140px] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
             placeholder="Send a message"
           ></input>
 
@@ -66,7 +70,7 @@ export default function UserChatLayout() {
           </button>
 
           {/* Disclaimer */}
-          <div className="text-center font-medium text-[12px] leading-[100%] absolute left-1/2 transform -translate-x-[234px] bottom-[100px] w-[494px]">
+          <div className="text-center font-medium text-[12px] leading-[100%] absolute left-1/2 transform -translate-x-1/2 bottom-[100px] w-[494px]">
             <span>
               <span className="text-[#718096] font-medium text-[12px] leading-[100%]">
                 Free Research Preview. ChatGPT may produce inaccurate
@@ -111,15 +115,6 @@ export default function UserChatLayout() {
             </a>
           </div>
         </footer>
-        {/* <footer className="text-[#718096] text-center bg-gray-950 w-screen h-20">
-          <div className="mt-3">© 2023 AskUTS. All Rights Reserved.</div>
-          <div className="space-x-4 mt-3">
-            <a href="">Hompage</a>
-            <a href="">License</a>
-            <a href="">Terms of Use</a>
-            <a href="">Privacy Policy</a>
-          </div>
-        </footer> */}
       </div>
     </>
   );
