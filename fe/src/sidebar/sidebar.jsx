@@ -1,14 +1,6 @@
 import React from "react";
 import "../sidebar.css";
 
-import Auto_awesome_FILL1_wght400_GRAD0_opsz481 from "assets/Auto_awesome_FILL1_wght400_GRAD0_opsz481";
-import Vector from "assets/Vector";
-import Icon from "assets/Icon";
-import Vector1 from "assets/Vector1";
-import Vector2 from "assets/Vector2";
-import Avatar from "assets/Avatar";
-import Logout from "assets/Logout";
-import Vector3 from "assets/Vector3";
 export default function Sidebar(props: SidebarProps) {
   return <div className={`w-[310px] h-[1096px] pt-[736px] pb-[114px] drop-shadow-lg rounded-[20px] px-[27px] relative bg-white flex justify-center ${props.className}`} style={props.style}>
       <div className="top-[52px] h-[26px] w-[222px] font-poppins text-[#1B2559] inset-x-[0] absolute text-center leading-none mx-auto">
