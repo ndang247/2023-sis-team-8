@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        appearance: none;
+        background: none;
+      }
+    </style>
+    <title>User Chat Layout</title>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="footer">
+        <div class="_2023-horizon-ui-ai-template-all-rights-reserved">
+          © 2023 Horizon UI AI Template. All Rights Reserved.
+        </div>
+        <div class="links">
+          <div class="homepage">Homepage</div>
+          <div class="license">License</div>
+          <div class="terms-of-use">Terms of Use</div>
+          <div class="privacy-policy">Privacy Policy</div>
+        </div>
+      </div>
+
+      <div class="input">
+        <div class="send-a-message">Send a message</div>
+      </div>
+
+      <div class="button">
+        <div class="submit">Submit</div>
+      </div>
+
+      <div
+        class="free-research-preview-chat-gpt-may-produce-inaccurate-information-about-people-places-or-facts-chat-gpt-may-12-version"
+      >
+        <span
+          ><span
+            class="free-research-preview-chat-gpt-may-produce-inaccurate-information-about-people-places-or-facts-chat-gpt-may-12-version-span"
+            >Free Research Preview. ChatGPT may produce inaccurate information
+            about people, places, or facts. </span
+          ><span
+            class="free-research-preview-chat-gpt-may-produce-inaccurate-information-about-people-places-or-facts-chat-gpt-may-12-version-span2"
+            >ChatGPT May 12 Version</span
+          ></span
+        >
+      </div>
+
+      <!-- <div class="toggle">
+        <div class="gpt-3-5">
+          <div class="background">
+            <svg
+              class="rectangle-3"
+              width="174"
+              height="70"
+              viewBox="0 0 174 70"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g filter="url(#filter0_d_1_298)">
+                <path
+                  d="M0 14C0 6.26801 6.26801 0 14 0H160C167.732 0 174 6.26801 174 14V56C174 63.732 167.732 70 160 70H14C6.26801 70 0 63.732 0 56V14Z"
+                  fill="white"
+                />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_d_1_298"
+                  x="-35"
+                  y="-22"
+                  width="272"
+                  height="168"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB"
+                >
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha"
+                  />
+                  <feMorphology
+                    radius="4"
+                    operator="dilate"
+                    in="SourceAlpha"
+                    result="effect1_dropShadow_1_298"
+                  />
+                  <feOffset dx="14" dy="27" />
+                  <feGaussianBlur stdDeviation="22.5" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.2 0"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow_1_298"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow_1_298"
+                    result="shape"
+                  />
+                </filter>
+              </defs>
+            </svg>
+
+            <svg
+              class="frame-44"
+              width="39"
+              height="40"
+              viewBox="0 0 39 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                y="0.5"
+                width="39"
+                height="39"
+                rx="19.5"
+                fill="url(#paint0_linear_1_299)"
+              />
+              <g filter="url(#filter0_d_1_299)">
+                <path
+                  d="M24.6937 16.6205C24.6322 16.6205 24.58 16.6078 24.5369 16.5823C24.4938 16.5569 24.46 16.5123 24.4354 16.4487L23.9004 15.1504L22.5535 14.5394C22.492 14.5139 22.449 14.4789 22.4244 14.4344C22.3998 14.3898 22.3875 14.3357 22.3875 14.2721C22.3875 14.2084 22.3998 14.1543 22.4244 14.1098C22.449 14.0652 22.492 14.0302 22.5535 14.0048L23.9004 13.4129L24.4354 12.1718C24.46 12.1082 24.4938 12.0636 24.5369 12.0382C24.58 12.0127 24.6322 12 24.6937 12C24.7552 12 24.8075 12.0127 24.8506 12.0382C24.8936 12.0636 24.9274 12.1082 24.952 12.1718L25.4871 13.4129L26.8339 14.0048C26.8954 14.0302 26.9385 14.0652 26.9631 14.1098C26.9877 14.1543 27 14.2084 27 14.2721C27 14.3357 26.9877 14.3898 26.9631 14.4344C26.9385 14.4789 26.8954 14.5139 26.8339 14.5394L25.4871 15.1504L24.952 16.4487C24.9274 16.5123 24.8936 16.5569 24.8506 16.5823C24.8075 16.6078 24.7552 16.6205 24.6937 16.6205ZM24.6937 28C24.6445 28 24.5953 27.9873 24.5461 27.9618C24.4969 27.9364 24.46 27.8918 24.4354 27.8282L23.9004 26.5871L22.572 25.9952C22.5105 25.9698 22.4674 25.9348 22.4428 25.8902C22.4182 25.8457 22.4059 25.7916 22.4059 25.7279C22.4059 25.6643 22.4182 25.6102 22.4428 25.5656C22.4674 25.5211 22.5105 25.4861 22.572 25.4606L23.9004 24.8687L24.4354 23.5513C24.46 23.4877 24.4938 23.4431 24.5369 23.4177C24.58 23.3922 24.6322 23.3795 24.6937 23.3795C24.7552 23.3795 24.8075 23.3922 24.8506 23.4177C24.8936 23.4431 24.9274 23.4877 24.952 23.5513L25.4871 24.8687L26.8155 25.4606C26.877 25.4861 26.92 25.5211 26.9446 25.5656C26.9692 25.6102 26.9815 25.6643 26.9815 25.7279C26.9815 25.7916 26.9692 25.8457 26.9446 25.8902C26.92 25.9348 26.877 25.9698 26.8155 25.9952L25.4871 26.5871L24.952 27.8282C24.9274 27.8918 24.8905 27.9364 24.8413 27.9618C24.7921 27.9873 24.7429 28 24.6937 28ZM16.5941 24.6969C16.4957 24.6969 16.4004 24.6683 16.3081 24.611C16.2159 24.5537 16.1451 24.4741 16.0959 24.3723L14.8967 21.7184L12.3137 20.5155C12.2153 20.4646 12.1384 20.3914 12.083 20.2959C12.0277 20.2005 12 20.1018 12 20C12 19.8982 12.0277 19.7995 12.083 19.7041C12.1384 19.6086 12.2153 19.5354 12.3137 19.4845L14.8967 18.2816L16.0959 15.6468C16.1451 15.5322 16.2159 15.4463 16.3081 15.389C16.4004 15.3317 16.4957 15.3031 16.5941 15.3031C16.6925 15.3031 16.7878 15.3317 16.8801 15.389C16.9723 15.4463 17.0431 15.5259 17.0923 15.6277L18.31 18.2816L20.8745 19.4845C20.9852 19.5354 21.0683 19.6086 21.1236 19.7041C21.179 19.7995 21.2066 19.8982 21.2066 20C21.2066 20.1018 21.179 20.2005 21.1236 20.2959C21.0683 20.3914 20.9852 20.4646 20.8745 20.5155L18.31 21.7184L17.0923 24.3723C17.0431 24.4869 16.9723 24.5696 16.8801 24.6205C16.7878 24.6714 16.6925 24.6969 16.5941 24.6969Z"
+                  fill="#603CFF"
+                />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_d_1_299"
+                  x="-28.95"
+                  y="3.55"
+                  width="96.9"
+                  height="97.9"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB"
+                >
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha"
+                  />
+                  <feOffset dy="32.5" />
+                  <feGaussianBlur stdDeviation="20.475" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0.262745 0 0 0 0 0.0941176 0 0 0 0 1 0 0 0 0.28 0"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow_1_299"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow_1_299"
+                    result="shape"
+                  />
+                </filter>
+                <linearGradient
+                  id="paint0_linear_1_299"
+                  x1="19.5"
+                  y1="0.5"
+                  x2="19.5"
+                  y2="39.5"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#FBFBFF" />
+                  <stop offset="1" stop-color="#CACAFF" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="text">
+            <div class="gpt-3-52">GPT-3.5</div>
+          </div>
+        </div>
+        <div class="gpt-4">
+          <svg
+            class="frame-442"
+            width="39"
+            height="40"
+            viewBox="0 0 39 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              y="0.5"
+              width="39"
+              height="39"
+              rx="19.5"
+              fill="url(#paint0_linear_1_304)"
+            />
+            <g filter="url(#filter0_d_1_304)">
+              <path
+                d="M17.5087 22.0878H14.5617C14.3401 22.0878 14.1761 21.9908 14.0697 21.7967C13.9634 21.6026 13.9787 21.4129 14.1157 21.2276L20.4289 12.2832C20.5224 12.16 20.6394 12.0755 20.7797 12.0297C20.92 11.984 21.0604 11.991 21.2007 12.051C21.341 12.1055 21.4521 12.1971 21.534 12.3258C21.6158 12.4544 21.6451 12.5918 21.6217 12.7379L20.8582 18.6861H24.43C24.6717 18.6861 24.8421 18.7902 24.9412 18.9985C25.0403 19.2067 25.0141 19.4035 24.8627 19.5889L17.908 27.758C17.8144 27.8725 17.6938 27.9469 17.5463 27.9812C17.3987 28.0156 17.262 28.0028 17.1361 27.9428C17.0047 27.8883 16.9031 27.7994 16.8312 27.6762C16.7594 27.553 16.7324 27.4156 16.7502 27.2641L17.5087 22.0878Z"
+                fill="#603CFF"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_1_304"
+                x="-26.95"
+                y="3.55"
+                width="92.9"
+                height="97.9"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="32.5" />
+                <feGaussianBlur stdDeviation="20.475" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.262745 0 0 0 0 0.0941176 0 0 0 0 1 0 0 0 0.28 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_1_304"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_1_304"
+                  result="shape"
+                />
+              </filter>
+              <linearGradient
+                id="paint0_linear_1_304"
+                x1="19.5"
+                y1="0.5"
+                x2="19.5"
+                y2="39.5"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#FBFBFF" />
+                <stop offset="1" stop-color="#CACAFF" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="text2">
+            <div class="gpt-42">GPT-4</div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="no-plugins-enabled">
+        <div class="no-plugins-enabled2">No plugins enabled</div>
+        <svg
+          class="vector2"
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.40852 0.741675C9.08352 0.416675 8.55852 0.416675 8.23352 0.741675L5.00019 3.97501L1.76685 0.741674C1.44185 0.416674 0.916851 0.416674 0.591851 0.741674C0.266851 1.06667 0.266851 1.59167 0.591851 1.91667L4.41685 5.74167C4.74185 6.06667 5.26685 6.06667 5.59185 5.74167L9.41685 1.91667C9.73352 1.60001 9.73352 1.06667 9.40852 0.741675Z"
+            fill="#718096"
+          />
+        </svg>
+      </div> -->
+
+      <div class="api-key-card">
+        <div class="save-button">
+          <div class="save">Save</div>
+        </div>
+        <div class="input2">
+          <div class="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
+            sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          </div>
+        </div>
+        <div class="title">Enter your OpenAI API Key</div>
+        <div class="body">
+          You need an OpenAI API Key to use Horizon Chat UI.<br />Your API Key
+          is stored locally on your browser and never sent anywhere else.
+        </div>
+        <div
+          class="the-app-will-connect-to-open-ai-api-server-to-check-if-your-api-key-is-working-properly"
+        >
+          *The app will connect to OpenAI API server to check if your API Key is
+          working properly.
+        </div>
+        <div class="get-your-api-key-from-open-ai-dashboard">
+          Get your API key from Open AI Dashboard
+        </div>
+        <div class="your-api-key-is-not-working">
+          <div class="your-api-key-is-not-working2">
+            Your API Key is not working?
+          </div>
+          <svg
+            class="vector3"
+            width="10"
+            height="6"
+            viewBox="0 0 10 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.06037 0.24375C8.73537 -0.08125 8.21037 -0.0812501 7.88537 0.24375L4.65204 3.47708L1.41871 0.24375C1.09371 -0.0812504 0.568707 -0.0812504 0.243707 0.24375C-0.0812931 0.56875 -0.0812932 1.09375 0.243707 1.41875L4.06871 5.24375C4.39371 5.56875 4.91871 5.56875 5.24371 5.24375L9.06871 1.41875C9.38537 1.10208 9.38537 0.56875 9.06037 0.24375Z"
+              fill="#1B2559"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title {
+  left: calc(50% - 153px);
+  top: calc(50% - 197px);
+}
+.body {
+  left: calc(50% - 199px);
+  top: calc(50% - 157px);
+}
+.the-app-will-connect-to-open-ai-api-server-to-check-if-your-api-key-is-working-properly {
+  left: calc(50% - 176px);
+  top: calc(50% - -113px);
+}
+.get-your-api-key-from-open-ai-dashboard {
+  left: calc(50% - 140px);
+  top: calc(50% - -25px);
+}
+.your-api-key-is-not-working {
+  left: calc(50% - 117px);
+  top: calc(50% - -69px);
+}
+.vector3 {
+  transform: translate(-9.31px, 0px);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+}
