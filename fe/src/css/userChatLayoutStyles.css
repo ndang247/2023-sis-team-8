@@ -2,51 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-._2023-horizon-ui-ai-template-all-rights-reserved {
-  color: #718096;
-  text-align: center;
-  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
-  position: absolute;
-  left: 20px;
-  top: calc(50% - -469px);
-}
-.links {
-  width: 416px;
-  height: 24px;
-  position: static;
-}
-.homepage {
-  color: #718096;
-  text-align: center;
-  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
-  position: absolute;
-  left: 1104px;
-  top: calc(50% - -469px);
-}
-.license {
-  color: #718096;
-  text-align: center;
-  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
-  position: absolute;
-  left: 1216px;
-  top: calc(50% - -469px);
-}
-.terms-of-use {
-  color: #718096;
-  text-align: center;
-  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
-  position: absolute;
-  left: 1306px;
-  top: calc(50% - -469px);
-}
-.privacy-policy {
-  color: #718096;
-  text-align: center;
-  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
-  position: absolute;
-  left: 1428px;
-  top: calc(50% - -469px);
-}
 .button {
   background: linear-gradient(
     15.46deg,
@@ -278,4 +233,26 @@
   top: 323px;
   transform: translate(-9.31px, 0px);
   overflow: visible;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
 }
