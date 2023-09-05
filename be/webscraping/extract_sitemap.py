@@ -2,8 +2,19 @@ from bs4 import BeautifulSoup
 import requests
 
 num_pages = 13
-base_url = "https://www.uts.edu.au/sitemap.xml?page={0}"  # Replace with the actual URL
+base_url = "https://www.uts.edu.au/sitemap.xml?page={0}"  # Replace with the actual URL    -> get URL from key phrase -> create a function here.( takes a string that has a key phrase and it searches the sitemap and extracts the url, returns a list of URL)
 sitemap_urls = []
+
+def get_url_from_keyPhrase(keyphrase, sitemap):
+    '''This function loops through the sitemap and searches for keyphrase in the URL'''
+    return url_list
+
+
+# pseodo code 
+# Test 
+# Actual Code
+
+
 for i in range(1,num_pages+1):
     url = base_url.format(i)
     sitemap_urls.append(url)
