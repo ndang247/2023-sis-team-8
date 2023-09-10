@@ -1,15 +1,15 @@
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from datetime import datetime
 
 class Message(BaseModel):
     text: str
     timeStamp: datetime
 
-    @validator('text')
+    @field_validator('text')
     def whitespace(value):
         return value.strip()
 
-    class Config:
+    class ConfigDict:
         validate_assignment = True
 
 class Answer(BaseModel):
