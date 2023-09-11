@@ -7,7 +7,7 @@ export default function UserChatLayout() {
     <>
       <div className="box-border m-auto flex flex-col min-h-screen justify-between items-center">
         <main className="flex-grow flex flex-row items-center justify-center mt-[20%]">
-          <div className="bg-white rounded-[14px] w-[494px] h-[480px] absolute left-1/2 transform -translate-x-1/2 top-[213px] shadow-lg overflow-hidden">
+          {/* <div className="bg-white rounded-[14px] w-[494px] h-[480px] absolute left-1/2 transform -translate-x-1/2 top-[213px] shadow-lg overflow-hidden">
             <div className="bg-gradient-to-r from-blue-400 to-teal-400 rounded-full flex flex-row items-center justify-center w-[121px] h-[54px] absolute left-[333px] top-[189px] shadow-md overflow-hidden">
               <div className="text-[#fff] text-left font-semibold text-[14px] leading-[16px] relative w-[34px] h-[20px]">
                 Save
@@ -52,17 +52,17 @@ export default function UserChatLayout() {
                 />
               </svg>
             </div>
-          </div>
+          </div> */}
 
           {/* Chat input */}
           <input
-            className="absolute border border-[#e2e8f0] rounded-full w-[494px] h-[54px] overflow-hidden lg:left-1/2 lg:transform lg:-translate-x-1/2 bottom-[200px] lg:bottom-[140px] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="absolute border border-[#e2e8f0] rounded-full w-[80%] lg:w-[40%] h-[54px] overflow-hidden lg:left-1/2 lg:transform lg:-translate-x-1/2 bottom-[220px] lg:bottom-[140px] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
             placeholder="Send a message"
           ></input>
 
           {/* Submit button */}
           <button
-            className="absolute flex items-center justify-center w-[192px] h-[54px] rounded-full opacity-20 overflow-hidden lg:left-1/2 lg:transform lg:-translate-x-[-300px] bottom-[100px] lg:bottom-[140px] bg-gradient-to-r from-blue-600 to-[#0f4beb] shadow-lg"
+            className="absolute flex items-center justify-center w-[100px] h-[54px] rounded-full opacity-20 overflow-hidden lg:left-1/2 lg:transform lg:-translate-x-[-330px] bottom-[100px] lg:bottom-[140px] bg-gradient-to-r from-blue-600 to-[#0f4beb] shadow-lg"
             disabled
           >
             <div className="text-white text-left font-semibold text-[14px] leading-[16px] relative w-[50px] h-5">
@@ -71,7 +71,7 @@ export default function UserChatLayout() {
           </button>
 
           {/* Disclaimer */}
-          <div className="text-center font-medium text-[12px] leading-[100%] absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 bottom-[170px] lg:bottom-[100px] w-[494px]">
+          <div className="text-center font-medium text-[12px] leading-[100%] absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 bottom-[170px] lg:bottom-[100px] w-[80%] lg:w-[30%]">
             <span>
               <span className="text-[#718096] font-medium text-[12px] leading-[100%]">
                 Free Research Preview. ChatGPT may produce inaccurate
@@ -85,18 +85,22 @@ export default function UserChatLayout() {
         </main>
 
         {/* Footer */}
-        <footer className="text-[#fff] text-center bg-[#0f4beb] w-screen h-20">
-          <div className="mr-auto ml-auto w-[1170px]">
-            <div className="inline-block float-left relative pl-[15px] pr-[15px]">
+        <footer className="text-[#fff] text-center bg-[#0f4beb] w-screen max-lg:w-auto h-20 max-lg:fixed max-lg:bottom-0">
+          <div className="mr-auto ml-auto w-screen max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
+            <div className="inline-block float-left relative pl-[15px] pr-[15px] max-lg:mb-3">
               <a
                 href="https://www.uts.edu.au/"
                 target="_blank"
                 title="University of Technology Sydney"
               >
-                <img src={utsLogo} alt="UTS logo" />
+                <img
+                  src={utsLogo}
+                  alt="UTS logo"
+                  className="max-lg:w-[100px] max-lg:h-auto"
+                />
               </a>
             </div>
-            <div className="text-[#fff] text-center font-medium text-[14px] leading-[24px] mt-3">
+            <div className="text-[#fff] text-center font-medium text-[14px] leading-[24px] lg:mt-3">
               © 2023 AskUTS. All Rights Reserved.
             </div>
             <div className="space-x-4 mt-3">
