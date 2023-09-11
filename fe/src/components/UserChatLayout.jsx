@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/userChatLayoutStyles.css";
+import utsLogo from "../assets/uts-logo.png";
 
 export default function UserChatLayout() {
   return (
@@ -85,34 +86,45 @@ export default function UserChatLayout() {
 
         {/* Footer */}
         <footer className="text-[#fff] text-center bg-[#0f4beb] w-screen h-20">
-          <div className="text-[#fff] text-center font-medium text-[14px] leading-[24px] mt-3">
-            © 2023 AskUTS. All Rights Reserved.
-          </div>
-          <div className="space-x-4 mt-3">
-            <a
-              href=""
-              className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
-            >
-              Homepage
-            </a>
-            <a
-              href=""
-              className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
-            >
-              License
-            </a>
-            <a
-              href=""
-              className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
-            >
-              Terms of Use
-            </a>
-            <a
-              href=""
-              className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
-            >
-              Privacy Policy
-            </a>
+          <div className="mr-auto ml-auto w-[1170px]">
+            <div className="inline-block float-left relative pl-[15px] pr-[15px]">
+              <a
+                href="https://www.uts.edu.au/"
+                target="_blank"
+                title="University of Technology Sydney"
+              >
+                <img src={utsLogo} alt="UTS logo" />
+              </a>
+            </div>
+            <div className="text-[#fff] text-center font-medium text-[14px] leading-[24px] mt-3">
+              © 2023 AskUTS. All Rights Reserved.
+            </div>
+            <div className="space-x-4 mt-3">
+              <a
+                href=""
+                className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
+              >
+                Homepage
+              </a>
+              <a
+                href=""
+                className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
+              >
+                License
+              </a>
+              <a
+                href=""
+                className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
+              >
+                Terms of Use
+              </a>
+              <a
+                href=""
+                className="text-[#fff] text-center font-medium text-[14px] leading-[24px]"
+              >
+                Privacy Policy
+              </a>
+            </div>
           </div>
         </footer>
       </div>
