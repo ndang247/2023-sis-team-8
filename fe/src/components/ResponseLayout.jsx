@@ -45,7 +45,7 @@ export const ResponseLayout = () => {
 
         <div className="relative">
           <input
-            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
             readOnly
           ></input>
 
@@ -72,7 +72,7 @@ export const ResponseLayout = () => {
             </svg>
           </button>
         </div>
-        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+        <div className="bg-[#a6a6a6] w-[940px] relative overflow-hidden mb-8 pl-5">
           <span>
             Artificial Intelligence (AI) offers numerous advantages and has the
             potential to revolutionize various aspects of our lives. Here are
@@ -82,7 +82,7 @@ export const ResponseLayout = () => {
 
         <div className="relative">
           <input
-            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
             readOnly
           ></input>
 
@@ -109,7 +109,7 @@ export const ResponseLayout = () => {
             </svg>
           </button>
         </div>
-        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+        <div className="bg-[#a6a6a6] w-[940px] relative overflow-hidden mb-8 pl-5">
           <span>
             Artificial Intelligence (AI) offers numerous advantages and has the
             potential to revolutionize various aspects of our lives. Here are
@@ -119,7 +119,7 @@ export const ResponseLayout = () => {
 
         <div className="relative">
           <input
-            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
             readOnly
           ></input>
 
@@ -146,7 +146,7 @@ export const ResponseLayout = () => {
             </svg>
           </button>
         </div>
-        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+        <div className="bg-[#a6a6a6] w-[940px] relative overflow-hidden mb-8 pl-5">
           <span>
             Artificial Intelligence (AI) offers numerous advantages and has the
             potential to revolutionize various aspects of our lives. Here are
