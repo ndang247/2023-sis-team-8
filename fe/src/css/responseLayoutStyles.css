@@ -1,13 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:500,700,600");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
 body {
-  background-color: #ebebeb;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
 }
 
 .layout {
@@ -138,29 +146,13 @@ body {
   width: 1063px;
 }
 
-.layout .regenerate-response {
-  align-items: center;
-  border: 1px solid;
-  border-color: #e2e8f0;
-  border-radius: 45px;
-  display: flex;
-  gap: 10px;
-  height: 54px;
-  justify-content: center;
-  left: 421px;
-  overflow: hidden;
-  position: absolute;
-  top: 581px;
-  width: 218px;
-}
-
 .layout .vector {
   height: 14px;
   position: relative;
   width: 14px;
 }
 
-.layout .text-wrapper-5 {
+.text-wrapper-5 {
   color: #1b2559;
   font-family: "Plus Jakarta Sans", Helvetica;
   font-size: 14px;
@@ -369,4 +361,38 @@ body {
   position: absolute;
   top: 11px;
   width: 9px;
+}
+
+.the-advantages-of-artificial-intelligence {
+  color: #1b2559;
+  text-align: left;
+  font: 600 16px/100% "Plus Jakarta Sans", sans-serif;
+  position: absolute;
+  left: 22px;
+  top: 22px;
+}
+.edit {
+  position: absolute;
+  left: 896px;
+  top: 18px;
+  overflow: visible;
+}
+
+.artificial-intelligence-ai-offers-numerous-advantages-and-has-the-potential-to-revolutionize-various-aspects-of-our-lives-here-are-some-key-advantages-of-ai-automation-ai-can-automate-repetitive-and-mundane-tasks-saving-time-and-effort-for-humans-it-can-handle-large-volumes-of-data-perform-complex-calculations-and-execute-tasks-with-precision-and-consistency-this-automation-leads-to-increased-productivity-and-efficiency-in-various-industries-decision-making-ai-systems-can-analyze-vast-amounts-of-data-identify-patterns-and-make-informed-decisions-based-on-that-analysis-this-ability-is-particularly-useful-in-complex-scenarios-where-humans-may-struggle-to-process-large-datasets-or-where-quick-and-accurate-decisions-are-crucial-improved-accuracy-ai-algorithms-can-achieve-high-levels-of-accuracy-and-precision-in-tasks-such-as-image-recognition-natural-language-processing-and-data-analysis-they-can-eliminate-human-errors-caused-by-fatigue-distractions-or-bias-leading-to-more-reliable-and-consistent-results-continuous-operation-ai-systems-can-work-tirelessly-without-the-need-for-breaks-resulting-in-uninterrupted-24-7-operations-this-capability-is-especially-beneficial-in-applications-like-customer-support-chatbots-manufacturing-processes-and-surveillance-systems {
+  color: #1b2559;
+  text-align: left;
+  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  width: 896px;
+  height: 431px;
+}
+.artificial-intelligence-ai-offers-numerous-advantages-and-has-the-potential-to-revolutionize-various-aspects-of-our-lives-here-are-some-key-advantages-of-ai-automation-ai-can-automate-repetitive-and-mundane-tasks-saving-time-and-effort-for-humans-it-can-handle-large-volumes-of-data-perform-complex-calculations-and-execute-tasks-with-precision-and-consistency-this-automation-leads-to-increased-productivity-and-efficiency-in-various-industries-decision-making-ai-systems-can-analyze-vast-amounts-of-data-identify-patterns-and-make-informed-decisions-based-on-that-analysis-this-ability-is-particularly-useful-in-complex-scenarios-where-humans-may-struggle-to-process-large-datasets-or-where-quick-and-accurate-decisions-are-crucial-improved-accuracy-ai-algorithms-can-achieve-high-levels-of-accuracy-and-precision-in-tasks-such-as-image-recognition-natural-language-processing-and-data-analysis-they-can-eliminate-human-errors-caused-by-fatigue-distractions-or-bias-leading-to-more-reliable-and-consistent-results-continuous-operation-ai-systems-can-work-tirelessly-without-the-need-for-breaks-resulting-in-uninterrupted-24-7-operations-this-capability-is-especially-beneficial-in-applications-like-customer-support-chatbots-manufacturing-processes-and-surveillance-systems-span {
+  color: #1b2559;
+  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
+}
+.artificial-intelligence-ai-offers-numerous-advantages-and-has-the-potential-to-revolutionize-various-aspects-of-our-lives-here-are-some-key-advantages-of-ai-automation-ai-can-automate-repetitive-and-mundane-tasks-saving-time-and-effort-for-humans-it-can-handle-large-volumes-of-data-perform-complex-calculations-and-execute-tasks-with-precision-and-consistency-this-automation-leads-to-increased-productivity-and-efficiency-in-various-industries-decision-making-ai-systems-can-analyze-vast-amounts-of-data-identify-patterns-and-make-informed-decisions-based-on-that-analysis-this-ability-is-particularly-useful-in-complex-scenarios-where-humans-may-struggle-to-process-large-datasets-or-where-quick-and-accurate-decisions-are-crucial-improved-accuracy-ai-algorithms-can-achieve-high-levels-of-accuracy-and-precision-in-tasks-such-as-image-recognition-natural-language-processing-and-data-analysis-they-can-eliminate-human-errors-caused-by-fatigue-distractions-or-bias-leading-to-more-reliable-and-consistent-results-continuous-operation-ai-systems-can-work-tirelessly-without-the-need-for-breaks-resulting-in-uninterrupted-24-7-operations-this-capability-is-especially-beneficial-in-applications-like-customer-support-chatbots-manufacturing-processes-and-surveillance-systems-span2 {
+  color: #1b2559;
+  font: 500 14px/24px "Plus Jakarta Sans", sans-serif;
 }

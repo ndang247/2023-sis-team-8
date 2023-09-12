@@ -8,7 +8,8 @@ export default function UserChatLayout() {
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen justify-between items-center">
-        <main className="flex-grow flex flex-row items-center justify-center mt-[20%]">
+        <main className="flex-grow flex flex-row items-center justify-center">
+          <ResponseLayout />
           {/* Chat input */}
           <input
             className="absolute border border-[#e2e8f0] rounded-full w-[80%] lg:w-[700px] h-[54px] overflow-hidden lg:left-1/2 lg:transform lg:-translate-x-1/2 bottom-[220px] lg:bottom-[140px] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"

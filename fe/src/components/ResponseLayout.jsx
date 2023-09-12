@@ -1,128 +1,157 @@
 import React from "react";
+import "../css/responseLayoutStyles.css";
 
 export const ResponseLayout = () => {
   return (
     <>
-      <div className="relative w-[1550px] h-[986px]">
-        <footer className="absolute w-[1502px] h-[24px] top-[962px] left-[20px] bg-transparent">
-          <p className="absolute top-0 left-0 [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-            © 2023 Horizon UI AI Template. All Rights Reserved.
-          </p>
-          <div className="absolute w-[424px] h-[24px] top-0 left-[1084px]">
-            <div className="absolute top-0 left-0 [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-              Homepage
-            </div>
-            <div className="absolute top-0 left-[112px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-              License
-            </div>
-            <div className="absolute top-0 left-[202px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-              Terms of Use
-            </div>
-            <div className="absolute top-0 left-[324px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-              Privacy Policy
-            </div>
-          </div>
-        </footer>
-        <img
-          className="absolute w-[738px] h-[54px] top-[825px] left-[305px]"
-          alt="Input"
-          src="https://c.animaapp.com/jLtQhi7O/img/input.png"
-        />
-        <button className="flex w-[192px] h-[54px] items-center justify-center absolute top-[825px] left-[1053px] rounded-[45px] overflow-hidden shadow-[0px_21px_27px_-10px_#603cff7a] [background:linear-gradient(180deg,_rgb(67,_24,_255)_0%,_rgb(66.95,_24.44,_255)_92.71%)] all-[unset] box-border">
-          <div className="relative w-[50px] h-[20px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-semibold text-white text-[14px] tracking-[0] leading-[16px]">
-            Submit
-          </div>
-        </button>
-        <div className="absolute w-[1063px] h-[635px] top-[154px] left-[245px]">
-          <div className="flex w-[218px] h-[54px] items-center justify-center gap-[10px] absolute top-[581px] left-[421px] rounded-[45px] overflow-hidden border border-solid border-slate-200">
-            <img
-              className="relative w-[14px] h-[14px]"
-              alt="Vector"
-              src="https://c.animaapp.com/jLtQhi7O/img/vector-3.svg"
-            />
-            <div className="relative w-[145px] h-[18px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-semibold text-[#1b2559] text-[14px] tracking-[0] leading-[16px] whitespace-nowrap">
-              Regenerate response
-            </div>
-          </div>
+      <div>
+        {/* <div className="items-center border border-solid border-[#e2e8f0] rounded-[45px] flex gap-[10px] h-[54px] justify-center overflow-hidden absolute w-[218px] opacity-20 lg:left-1/2 lg:transform lg:-translate-x-[0] bottom-[100px] lg:bottom-[200px] bg-[#fff] shadow-lg">
           <img
-            className="absolute w-[244px] h-[363px] top-[141px] left-[408px]"
-            alt="Bg image"
-            src="https://c.animaapp.com/jLtQhi7O/img/bg-image.svg"
-          />
-          <img
-            className="absolute w-[940px] h-[60px] top-0 left-[60px]"
-            alt="Question card"
-            src="https://c.animaapp.com/jLtQhi7O/img/question-card.png"
-          />
-          <img
-            className="absolute w-[1038px] h-[572px] top-[48px] left-[25px]"
-            alt="Response card"
-            src="https://c.animaapp.com/jLtQhi7O/img/response-card.png"
-          />
-          <div className="absolute w-[40px] h-[40px] top-[80px] left-0 rounded-[20px] [background:linear-gradient(180deg,_rgb(67,_24,_255)_0%,_rgb(105.51,_69.82,_255)_60.42%,_rgb(119.91,_86.96,_255)_64.06%,_rgb(67,_24,_255)_92.71%)]">
-            <img
-              className="absolute w-[28px] h-[30px] top-[7px] left-[6px]"
-              alt="Vector"
-              src="https://c.animaapp.com/jLtQhi7O/img/vector-2.svg"
-            />
-          </div>
-          <div className="absolute w-[40px] h-[40px] top-[10px] left-0 rounded-[20px] border border-solid border-slate-200">
-            <img
-              className="absolute w-[96px] h-[95px] top-[4px] left-[-29px]"
-              alt="Vector"
-              src="https://c.animaapp.com/jLtQhi7O/img/vector-1.svg"
-            />
-          </div>
-        </div>
-        <p className="absolute w-[715px] top-[898px] left-[418px] [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-transparent text-[12px] text-center tracking-[0] leading-[12px]">
-          <span className="text-[#718096]">
-            Free Research Preview. ChatGPT may produce inaccurate information
-            about people, places, or facts.{" "}
-          </span>
-          <a
-            href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <span className="text-[#120f43] underline">
-              ChatGPT May 12 Version
-            </span>
-          </a>
-        </p>
-        <div className="absolute w-[304px] h-[70px] top-[12px] left-[623px]">
-          <div className="absolute w-[174px] h-[70px] top-0 left-0">
-            <div className="relative w-[272px] h-[168px] top-[-22px] left-[-35px] bg-[url(https://c.animaapp.com/jLtQhi7O/img/background@2x.png)] bg-[100%_100%]">
-              <div className="relative w-[78px] h-[18px] top-[48px] left-[109px]">
-                <div className="absolute top-0 left-0 [font-family:'Plus_Jakarta_Sans',_Helvetica] font-bold text-[#120f43] text-[18px] tracking-[0] leading-[18px] whitespace-nowrap">
-                  GPT-3.5
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="absolute w-[108px] h-[39px] top-[16px] left-[196px] opacity-20">
-            <div className="relative w-[137px] h-[101px] left-[-27px]">
-              <img
-                className="absolute w-[93px] h-[101px] top-0 left-0"
-                alt="Frame"
-                src="https://c.animaapp.com/jLtQhi7O/img/frame-44.svg"
-              />
-              <div className="absolute w-[61px] h-[18px] top-[10px] left-[76px]">
-                <div className="absolute top-0 left-0 [font-family:'Plus_Jakarta_Sans',_Helvetica] font-bold text-[#120f43] text-[18px] tracking-[0] leading-[18px] whitespace-nowrap">
-                  GPT-4
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute w-[147px] h-[26px] top-[105px] left-[703px]">
-          <div className="absolute top-0 left-0 [font-family:'Plus_Jakarta_Sans',_Helvetica] font-medium text-[#718096] text-[14px] tracking-[0] leading-[26px] whitespace-nowrap">
-            No plugins enabled
-          </div>
-          <img
-            className="absolute w-[9px] h-[5px] top-[11px] left-[135px]"
+            className="vector"
             alt="Vector"
-            src="https://c.animaapp.com/jLtQhi7O/img/vector.svg"
+            src="https://c.animaapp.com/FX0wTcCc/img/vector.svg"
           />
+          <button disabled>
+            <div className="text-wrapper-5">Regenerate response</div>
+          </button>
+        </div> */}
+
+        {/* <svg
+          className="bg-image"
+          width="244"
+          height="363"
+          viewBox="0 0 244 363"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M77.8293 228.868H12.4602C7.54379 228.868 3.90597 226.666 1.54669 222.263C-0.812578 217.86 -0.472788 213.556 2.56607 209.35L142.604 6.42583C144.679 3.63069 147.273 1.71361 150.386 0.674593C153.499 -0.364099 156.612 -0.203311 159.724 1.15696C162.837 2.39374 165.301 4.47161 167.117 7.39056C168.933 10.3095 169.582 13.4262 169.063 16.7407L152.128 151.69H231.356C236.717 151.69 240.497 154.053 242.695 158.778C244.894 163.502 244.314 167.967 240.954 172.173L86.6857 357.51C84.6104 360.107 81.936 361.795 78.6627 362.574C75.3894 363.354 72.357 363.063 69.5654 361.702C66.6502 360.465 64.3958 358.45 62.8022 355.654C61.2089 352.859 60.6099 349.742 61.0053 346.304L77.8293 228.868Z"
+            fill="url(#paint0_linear_1_106)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_106"
+              x1="122"
+              y1="0"
+              x2="122"
+              y2="363"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FBFBFF" />
+              <stop offset="1" stop-color="#CACAFF" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg> */}
+
+        <div className="relative">
+          <input
+            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            readOnly
+          ></input>
+
+          <button>
+            <svg
+              className="edit"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_109)">
+                <path
+                  d="M3 17.46V20.5C3 20.78 3.22 21 3.5 21H6.54C6.67 21 6.8 20.95 6.89 20.85L17.81 9.94L14.06 6.19L3.15 17.1C3.05 17.2 3 17.32 3 17.46ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z"
+                  fill="#718096"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_109">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        </div>
+        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+          <span>
+            Artificial Intelligence (AI) offers numerous advantages and has the
+            potential to revolutionize various aspects of our lives. Here are
+            some key advantages of AI:
+          </span>
+        </div>
+
+        <div className="relative">
+          <input
+            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            readOnly
+          ></input>
+
+          <button>
+            <svg
+              className="edit"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_109)">
+                <path
+                  d="M3 17.46V20.5C3 20.78 3.22 21 3.5 21H6.54C6.67 21 6.8 20.95 6.89 20.85L17.81 9.94L14.06 6.19L3.15 17.1C3.05 17.2 3 17.32 3 17.46ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z"
+                  fill="#718096"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_109">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        </div>
+        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+          <span>
+            Artificial Intelligence (AI) offers numerous advantages and has the
+            potential to revolutionize various aspects of our lives. Here are
+            some key advantages of AI:
+          </span>
+        </div>
+
+        <div className="relative">
+          <input
+            className="rounded-[14px] border-solid border-[#e2e8f0] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            readOnly
+          ></input>
+
+          <button>
+            <svg
+              className="edit"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_109)">
+                <path
+                  d="M3 17.46V20.5C3 20.78 3.22 21 3.5 21H6.54C6.67 21 6.8 20.95 6.89 20.85L17.81 9.94L14.06 6.19L3.15 17.1C3.05 17.2 3 17.32 3 17.46ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z"
+                  fill="#718096"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_109">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        </div>
+        <div className="bg-[#fff] rounded-[14px] w-[940px] relative shadow-md overflow-hidden mb-8 pl-5">
+          <span>
+            Artificial Intelligence (AI) offers numerous advantages and has the
+            potential to revolutionize various aspects of our lives. Here are
+            some key advantages of AI:
+          </span>
         </div>
       </div>
     </>
