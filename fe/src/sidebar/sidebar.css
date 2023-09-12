@@ -1,2 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+p,
+ol,
+ul {
+  margin: 0px;
+}
+
+button {
+  padding: 0px;
+}
+
+ol,
+ul {
+  padding-inline-start: 1.5em;
+}
   
