@@ -1,9 +1,9 @@
-import { UserChatLayout } from "./components";
+import { UserChatLayout, ResponseLayout } from "./components";
 
 export default function App() {
   return (
     <>
-      <UserChatLayout />
+      <ResponseLayout />
     </>
   );
 }
