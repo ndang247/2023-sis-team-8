@@ -1,0 +1,372 @@
+body {
+  background-color: #ebebeb;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  height: 986px;
+  position: relative;
+  width: 1550px;
+}
+
+.layout .footer {
+  background-color: transparent;
+  height: 24px;
+  left: 20px;
+  position: absolute;
+  top: 962px;
+  width: 1502px;
+}
+
+.layout .text-wrapper {
+  color: #718096;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .links {
+  height: 24px;
+  left: 1084px;
+  position: absolute;
+  top: 0;
+  width: 424px;
+}
+
+.layout .div {
+  color: #718096;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  left: 112px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .text-wrapper-2 {
+  color: #718096;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  left: 202px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .text-wrapper-3 {
+  color: #718096;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  left: 324px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .input {
+  height: 54px;
+  left: 305px;
+  position: absolute;
+  top: 825px;
+  width: 738px;
+}
+
+.layout .button {
+  all: unset;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgb(67, 24, 255) 0%,
+    rgb(66.95, 24.44, 255) 92.71%
+  );
+  border-radius: 45px;
+  box-shadow: 0px 21px 27px -10px #603cff7a;
+  box-sizing: border-box;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  left: 1053px;
+  overflow: hidden;
+  position: absolute;
+  top: 825px;
+  width: 192px;
+}
+
+.layout .text-wrapper-4 {
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  height: 20px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: relative;
+  width: 50px;
+}
+
+.layout .overlap {
+  height: 635px;
+  left: 245px;
+  position: absolute;
+  top: 154px;
+  width: 1063px;
+}
+
+.layout .regenerate-response {
+  align-items: center;
+  border: 1px solid;
+  border-color: #e2e8f0;
+  border-radius: 45px;
+  display: flex;
+  gap: 10px;
+  height: 54px;
+  justify-content: center;
+  left: 421px;
+  overflow: hidden;
+  position: absolute;
+  top: 581px;
+  width: 218px;
+}
+
+.layout .vector {
+  height: 14px;
+  position: relative;
+  width: 14px;
+}
+
+.layout .text-wrapper-5 {
+  color: #1b2559;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  height: 18px;
+  letter-spacing: 0;
+  line-height: 16px;
+  position: relative;
+  white-space: nowrap;
+  width: 145px;
+}
+
+.layout .BG-image {
+  height: 363px;
+  left: 408px;
+  position: absolute;
+  top: 141px;
+  width: 244px;
+}
+
+.layout .question-card {
+  height: 60px;
+  left: 60px;
+  position: absolute;
+  top: 0;
+  width: 940px;
+}
+
+.layout .response-card {
+  height: 572px;
+  left: 25px;
+  position: absolute;
+  top: 48px;
+  width: 1038px;
+}
+
+.layout .AI-avatar {
+  background: linear-gradient(
+    180deg,
+    rgb(67, 24, 255) 0%,
+    rgb(105.51, 69.82, 255) 60.42%,
+    rgb(119.91, 86.96, 255) 64.06%,
+    rgb(67, 24, 255) 92.71%
+  );
+  border-radius: 20px;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  top: 80px;
+  width: 40px;
+}
+
+.layout .img {
+  height: 30px;
+  left: 6px;
+  position: absolute;
+  top: 7px;
+  width: 28px;
+}
+
+.layout .user-avatar {
+  border: 1px solid;
+  border-color: #e2e8f0;
+  border-radius: 20px;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 40px;
+}
+
+.layout .vector-2 {
+  height: 95px;
+  left: -29px;
+  position: absolute;
+  top: 4px;
+  width: 96px;
+}
+
+.layout .free-research {
+  color: transparent;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 12px;
+  font-weight: 500;
+  left: 418px;
+  letter-spacing: 0;
+  line-height: 12px;
+  position: absolute;
+  text-align: center;
+  top: 898px;
+  width: 715px;
+}
+
+.layout .span {
+  color: #718096;
+}
+
+.layout .text-wrapper-6 {
+  color: #120f43;
+  text-decoration: underline;
+}
+
+.layout .toggle {
+  height: 70px;
+  left: 623px;
+  position: absolute;
+  top: 12px;
+  width: 304px;
+}
+
+.layout .GPT {
+  height: 70px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 174px;
+}
+
+.layout .overlap-group {
+  background-image: url(https://c.animaapp.com/FX0wTcCc/img/background@2x.png);
+  background-size: 100% 100%;
+  height: 168px;
+  left: -35px;
+  position: relative;
+  top: -22px;
+  width: 272px;
+}
+
+.layout .text {
+  height: 18px;
+  left: 109px;
+  position: relative;
+  top: 48px;
+  width: 78px;
+}
+
+.layout .text-wrapper-7 {
+  color: #120f43;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 18px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 18px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .overlap-wrapper {
+  height: 39px;
+  left: 196px;
+  opacity: 0.2;
+  position: absolute;
+  top: 16px;
+  width: 108px;
+}
+
+.layout .overlap-2 {
+  height: 101px;
+  left: -27px;
+  position: relative;
+  width: 137px;
+}
+
+.layout .frame {
+  height: 101px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 93px;
+}
+
+.layout .div-wrapper {
+  height: 18px;
+  left: 76px;
+  position: absolute;
+  top: 10px;
+  width: 61px;
+}
+
+.layout .no-plugins-enabled {
+  height: 26px;
+  left: 703px;
+  position: absolute;
+  top: 105px;
+  width: 147px;
+}
+
+.layout .text-wrapper-8 {
+  color: #718096;
+  font-family: "Plus Jakarta Sans", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 26px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.layout .vector-3 {
+  height: 5px;
+  left: 135px;
+  position: absolute;
+  top: 11px;
+  width: 9px;
+}
