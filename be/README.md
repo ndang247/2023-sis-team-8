@@ -41,3 +41,24 @@ Add reload flag for auto-reload
 [ http://127.0.0.1:8000/docs]( http://127.0.0.1:8000/docs)
 
 [ http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
+## Running Tests
+
+Install dependencies
+
+```bash
+  pip install starlette
+```
+```bash
+  pip install httpx
+```
+```bash
+  pip install pytest
+```
+
+To run tests, run the following command
+
+```bash
+  pytest
+```
+

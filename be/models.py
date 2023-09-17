@@ -1,15 +1,23 @@
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
 
 class Message(BaseModel):
     text: str
     timeStamp: datetime
 
-    @validator('text')
+    @field_validator('text')
     def whitespace(value):
         return value.strip()
 
-    class Config:
+    @model_validator(mode='before')
+    def check_text_present(cls, values):
+        if not "text" in values:
+            raise ValueError("Text was not provided!")
+        if not "timeStamp" in values:
+            raise ValueError("Time stamp was not provided!")
+        return values
+
+    class ConfigDict:
         validate_assignment = True
 
 class Answer(BaseModel):
