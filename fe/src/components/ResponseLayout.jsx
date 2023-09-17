@@ -5,13 +5,13 @@ export const ResponseLayout = () => {
   return (
     <>
       <div className="flex-grow flex flex-col items-center justify-center w-[100%]">
-        <div className="relative mt-[1.5rem]">
+        <div className="flex justify-center relative mt-[1.5rem] w-[100%]">
           <input
-            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[100%] h-[55px] relative overflow-hidden mb-[1rem] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px] lg:w-[900px]"
             readOnly
           ></input>
 
-          <button>
+          <button className="relative flex items-center justify-center w-[50px] h-[50px] overflow-hidden bottom-0">
             <svg
               className="edit"
               width="24"
@@ -34,7 +34,7 @@ export const ResponseLayout = () => {
             </svg>
           </button>
         </div>
-        <div className="w-[940px] relative overflow-hidden mb-8 pl-5">
+        <div className="w-[100%] relative overflow-hidden mb-8 pl-5 lg:w-[940px]">
           <span>
             <span>
               Artificial Intelligence (AI) offers numerous advantages and has
@@ -74,15 +74,14 @@ export const ResponseLayout = () => {
           </span>
         </div>
 
-        <div className="relative">
+        <div className="flex justify-center relative w-[100%]">
           <input
-            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[940px] h-[54px] relative overflow-hidden mb-3 text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px]"
+            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[100%] h-[55px] relative overflow-hidden mb-[1rem] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px] lg:w-[900px]"
             readOnly
           ></input>
 
-          <button>
+          <button className="relative flex items-center justify-center w-[50px] h-[50px] overflow-hidden bottom-0">
             <svg
-              className="edit"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -103,7 +102,7 @@ export const ResponseLayout = () => {
             </svg>
           </button>
         </div>
-        <div className="w-[940px] relative overflow-hidden mb-8 pl-5">
+        <div className="w-[100%] relative overflow-hidden mb-8 pl-5 lg:w-[940px]">
           <span>
             <span>
               Artificial Intelligence (AI) offers numerous advantages and has

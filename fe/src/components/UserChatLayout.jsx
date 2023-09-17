@@ -14,6 +14,7 @@ export default function UserChatLayout() {
             className="relative border border-[#e2e8f0] rounded-full w-[100%] h-[55px] bottom-0 overflow-hidden text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px] mt-[1rem] mb-[1rem] lg:w-[940px]"
             placeholder="Send a message"
           ></input>
+
           <button
             className="relative flex items-center justify-center w-[120px] h-[50px] rounded-full opacity-40 overflow-hidden bottom-0 bg-gradient-to-r from-blue-600 to-[#0f4beb] shadow-lg"
             disabled
