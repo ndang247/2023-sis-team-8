@@ -1,13 +1,16 @@
 import openai
 import pandas as pd
 import numpy as np
+import os
 
 from openai.embeddings_utils import get_embedding
 
 embedding_model = "text-embedding-ada-002"                                #Embedding Function, there are many ways to go about it but it seems there are also alot of bugs                               
                                                                           
 openai.api_key = 'sk-INSERTKEYHERE'      #insert your OpenAI key here
-df = pd.read_csv('data.csv')            #read in data
+
+cwd = os.getcwd()
+df = pd.read_csv(cwd + '/OpenAI/embeddingFunctionality/' + 'data.csv')            #read in data
 
 #print(get_embedding("grape", engine='text-embedding-ada-002')) #This works and prints out an embedded vector
 
@@ -28,7 +31,7 @@ df['embedding'] = df['text'].apply(lambda x: embedFunc(x, embedding_model)) #mak
 
 
 
-df.to_csv('word_embeddings.csv')        #exporting the embedded data into a new csv
+df.to_csv(cwd + '/OpenAI/embeddingFunctionality/' + 'word_embeddings.csv')        #exporting the embedded data into a new csv
 
 #df['embedding'] = df['text'].apply(lambda x: x.upper())
 
