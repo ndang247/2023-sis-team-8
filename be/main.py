@@ -10,7 +10,7 @@ from pymongo.server_api import ServerApi
 from bson import json_util
 
 ##TODO env file
-uri = "mongodb+srv://{username}:{password}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://dev:fgxF22djLWE1gGaN@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
 
@@ -54,6 +54,7 @@ async def save_response(answer: Answer):
     created_message = col.find_one({"_id": result.inserted_id})
     ##TODO change to cleaner custom JSON serializer
     return JSONResponse(status_code=201, content=json_util.dumps(created_message, default=str))
+    ##json_util.dumps(created_message, default=str)
 
 try:
     client.admin.command('ping')

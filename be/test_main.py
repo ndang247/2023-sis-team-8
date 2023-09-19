@@ -9,6 +9,19 @@ def test_read_main():
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
 
+def test_chat_valid_message():
+    response = client.post("/chat/", 
+    json={"text": "Hello AskUTS chatbot", "timeStamp": 123}) 
+    assert response.status_code == 200
+    assert response.json()['message']['text'] == "Hello AskUTS chatbot"
+    assert response.json()['message']['timeStamp'] == "1970-01-01T00:02:03Z"
+    
+def test_chat_remove_whitespace():
+    response = client.post("/chat/", 
+    json={"text": "      no white space!    ", "timeStamp": 444}) 
+    assert response.status_code == 200
+    assert response.json()['message']['text'] == "no white space!"
+
 def test_chat_invalid_text():
     response = client.post("/chat/", 
     json={"text": True, "timeStamp": 444}) 
