@@ -24,5 +24,12 @@ export const Typewriter = ({ text, delay }) => {
   );
 };
 
-// Reference the implementation of Typewriter
-// https://blog.logrocket.com/3-ways-implement-typing-animation-react/
+/**
+ * Reference the implementation of Typewriter
+ * https://blog.logrocket.com/3-ways-implement-typing-animation-react/
+ */
+
+/**
+ * Alternative implementation
+ * https://www.npmjs.com/package/typewriter-effect
+ */
