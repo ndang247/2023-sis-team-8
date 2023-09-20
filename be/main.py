@@ -1,16 +1,22 @@
 from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from models import Message, Answer
 from pydantic import BaseModel
 from datetime import datetime
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from bson import json_util
+
+##TODO env file
+uri = "mongodb+srv://dev:fgxF22djLWE1gGaN@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
 
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
+client = MongoClient(uri, server_api=ServerApi('1'))
+db = client["askUTSApp"]
+col = db["messages"]
 
 @app.get("/")
 async def read_root():
@@ -41,16 +47,17 @@ async def send_message(message: Message):
 
     return answer
 
-""" @app.get("/items/{item_id}")
-async def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.post("/chat_save")
+async def save_response(answer: Answer):
+    answer = jsonable_encoder(answer)
+    result = col.insert_one(answer)
+    created_message = col.find_one({"_id": result.inserted_id})
+    ##TODO change to cleaner custom JSON serializer
+    return JSONResponse(status_code=201, content=json_util.dumps(created_message, default=str))
+    ##json_util.dumps(created_message, default=str)
 
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {
-        "item_name": item.name,
-        "item_id": item_id,
-        "item_price": item.price,
-        "is_offer": item.is_offer,
-    }
- """
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)

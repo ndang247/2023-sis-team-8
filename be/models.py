@@ -1,9 +1,19 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
+from bson import ObjectId
 
 class Message(BaseModel):
     text: str
     timeStamp: datetime
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "text": "Test message!",
+                "timeStamp": "2023-09-19T16:38:45.906Z"
+            }
+        }
+    }
 
     @field_validator('text')
     def whitespace(value):
@@ -26,5 +36,20 @@ class Answer(BaseModel):
     answer: str = Field(default="I don't know!")
     isURL: bool = Field(default=False)
     answerURL: str = Field(default="")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "message": {
+                    "text": "Test message",
+                    "timeStamp": "2023-09-08T05:25:00Z"
+                },
+                "timeStamp": "2023-09-20T14:00:52.168550",
+                "answer": "I don't know!",
+                "isURL": False,
+                "answerURL": ""
+            }
+        }
+    }
 
     
