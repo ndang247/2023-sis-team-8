@@ -92,6 +92,8 @@ https://www.uts.edu.au/research-and-teaching/our-research/institute-public-polic
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/our-teaching/postgraduate-award-courses/thank-you-your-postgraduate-enquiry
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/our-teaching/professional-development-courses/access-use-canvas
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/our-teaching/professional-development-courses/business-ethics-and-professional-practice
+https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/how-apply
+https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/questions
 https://www.uts.edu.au/research/institute-public-policy-and-governance/professional-learning/professional-development-courses
 https://www.uts.edu.au/research/institute-public-policy-and-governance/professional-learning/professional-development-courses/building-regulation-courses
 https://www.uts.edu.au/research/institute-public-policy-and-governance/professional-learning/professional-development-courses/building-regulation-courses/abc-building-code-australia
@@ -114,6 +116,7 @@ https://www.uts.edu.au/study/business/business-courses/graduate-research/finance
 https://www.uts.edu.au/study/business/business-courses/graduate-research/management-phd
 https://www.uts.edu.au/study/business/business-courses/graduate-research/management-phd/current-students
 https://www.uts.edu.au/study/business/business-courses/graduate-research/marketing-phd
+https://www.uts.edu.au/study/business/business-courses/graduate-research/marketing-phd/current-students/ella-bruce
 https://www.uts.edu.au/study/business/business-courses/management/postgraduate-options-management/staff-profiles
 https://www.uts.edu.au/study/business/business-courses/management/postgraduate-options-management/student-profiles
 https://www.uts.edu.au/study/business/business-courses/management/postgraduate-options-management/why-event-management
@@ -228,7 +231,6 @@ https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses/
 https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses/diploma-innovation/career-options
 https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses/diploma-innovation/diploma-innovation-faqs
 https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses/diploma-innovation/essential-information
-https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses/technology-and-innovation-transcript
 https://www.uts.edu.au/study/undergraduate/admission-requirements/application-process/uts-vacant-courses
 https://www.uts.edu.au/about/faculty-arts-and-social-sciences/international-studies-education/postgraduate/courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/postgraduate/our-courses/management-and-technical-courses/feit-pg-cta-info-pack-conversion
@@ -238,7 +240,6 @@ https://www.uts.edu.au/about/faculty-engineering-and-information-technology/shor
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/data-science/data-science-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/embed-return-all-short-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/specialised-courses/specialised-courses
-https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/telecoms/telecommunications-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/uts-institute-data-intensive-courses/cybersecurity
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/uts-institute-data-intensive-courses/data-science
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/why-short-courses/5-tech-trends-2024
@@ -255,14 +256,11 @@ https://www.uts.edu.au/commencing-students/essential-information/deferring-your-
 https://www.uts.edu.au/current-students/opportunities/uts-startups/courses-subjects-degrees/internships-startups
 https://www.uts.edu.au/current-students/opportunities/uts-startups/courses-subjects-degrees/internships-startups/further-internship-opportunities
 https://www.uts.edu.au/current-students/opportunities/uts-startups/study-entrepreneurship/uts-business-school-short-courses
-https://www.uts.edu.au/partners-and-community/initiatives/entrepreneurship/courses-subjects-degrees/bachelor-degrees
 https://www.uts.edu.au/partners-and-community/initiatives/social-justice-uts/centre-social-justice-inclusion/courses/diversity-and-inclusion-training/consent-matters-training
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/course-entry-requirements
-https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/how-apply
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/local-government-courses/past-research-projects
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/local-government-qualifications
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/local-government-qualifications/course-schedule
-https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/questions
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/questions/dfat-australia-awards-scholarships
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/postgraduate-courses/our-postgraduate-courses/thank-you-your-postgraduate-enquiry
 https://www.uts.edu.au/research-and-teaching/our-research/institute-sustainable-futures/short-courses/sustainability-short-courses
@@ -294,7 +292,6 @@ https://www.uts.edu.au/study/business/business-courses/graduate-research/finance
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/shu-yang
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/phd-prizes-and-scholarships
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/phd-publications
-https://www.uts.edu.au/study/business/business-courses/graduate-research/marketing-phd/current-students/ella-bruce
 https://www.uts.edu.au/study/business/business-courses/study-business-analytics
 https://www.uts.edu.au/study/business/business-courses/undergraduate-programs/business-cadetship-scheme
 https://www.uts.edu.au/study/business/business-courses/undergraduate-programs/combined-degree-options
@@ -424,6 +421,7 @@ https://www.uts.edu.au/study/business/business-courses/graduate-research/finance
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/duy-nguyen
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/inji-allahverdiyeva
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/luke-johnson
+https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/madeline-hamilton-combe
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/nikesh-lalchandani
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/yifeng-xu
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/zechu-jason-liu
@@ -544,11 +542,12 @@ https://www.uts.edu.au/study/business/business-courses/graduate-research/economi
 https://www.uts.edu.au/study/business/business-courses/graduate-research/economics-phd-program/current-economics-phd-students/william-huang
 https://www.uts.edu.au/study/business/business-courses/graduate-research/economics-phd-program/current-economics-phd-students/yujiao-li
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/anurag-soin
+https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/connor-arthur
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/fredy-pulga
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/haritha-v-h
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/khanh-nguyen
-https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/madeline-hamilton-combe
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/mohammad-hadi-sehatpour-0
+https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/ngoc-phuong-anh-nguyen
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/tra-nguyen
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/veronica-ong
 https://www.uts.edu.au/study/business/business-courses/graduate-research/finance-phd/current-students/vladislav-pyzhov
@@ -608,10 +607,10 @@ https://www.uts.edu.au/study/science/science-courses/undergraduate-science-and-m
 https://www.uts.edu.au/study/short-courses
 https://www.uts.edu.au/about/faculty-arts-and-social-sciences/news/uts-new-postgraduate-journalism-courses-look-future
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/news/new-undergraduate-courses-prepare-students-future
+https://www.uts.edu.au/research-and-teaching/our-research/australian-centre-olympic-studies/news/e-learning-courses-athletes
 https://www.uts.edu.au/research-and-teaching/our-research/institute-public-policy-and-governance/news/victorian-government-funds-scholarships-enhanced-local-government-service-delivery-courses-utsclg
 https://www.uts.edu.au/about/faculty-law/news/big-plans-short-courses
 https://www.uts.edu.au/news/education/new-subsidised-short-courses-prepare-future-workforce
-https://www.uts.edu.au/research-and-teaching/our-research/australian-centre-olympic-studies/news/e-learning-courses-athletes
 https://www.uts.edu.au/about/faculty-arts-and-social-sciences/news/education-courses-changed-world
 https://www.uts.edu.au/acri/news/chinese-names-dominate-results-language-courses
 https://www.uts.edu.au/about/faculty-arts-and-social-sciences/international-studies-education/postgraduate-education-courses
@@ -651,12 +650,10 @@ https://www.uts.edu.au/study/science/science-courses/undergraduate-science-and-m
 https://www.uts.edu.au/study/short-courses/develop-your-staff
 https://www.uts.edu.au/study/short-courses/take-course
 https://www.uts.edu.au/study/transdisciplinary-innovation/undergraduate-courses
-https://www.uts.edu.au/study/undergraduate/our-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/animal-logic-academy/animal-logic-academy-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/ai-and-machine-learning
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/data-science
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/specialised-courses
-https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/telecoms
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/uts-institute-data-intensive-courses
 https://www.uts.edu.au/about/faculty-engineering-and-information-technology/short-courses/why-short-courses
 https://www.uts.edu.au/research-and-teaching/our-research/institute-sustainable-futures/short-courses
@@ -754,6 +751,6 @@ https://www.uts.edu.au/study/law/courses/undergraduate-law/course-experience/und
 https://www.uts.edu.au/study/law/courses/undergraduate-law/course-experience/undergraduate-profiles/sharna-white
 https://www.uts.edu.au/study/law/courses/undergraduate-law/course-experience/undergraduate-profiles/sonya-berson
 https://www.uts.edu.au/study/law/courses/undergraduate-law/course-experience/undergraduate-profiles/timothy-broune
-https://www.uts.edu.au/study/science/science-courses/research-courses/phd-scholarships/epigenetics-chlamydial/lubna-ali
 https://www.uts.edu.au/study/science/science-courses/undergraduate-science-and-maths/undergraduate-science-and-maths
 https://www.uts.edu.au/study/transdisciplinary-innovation/short-courses/creative-intelligence
+https://www.uts.edu.au/study/undergraduate/our-courses

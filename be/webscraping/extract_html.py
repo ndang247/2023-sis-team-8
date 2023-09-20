@@ -6,8 +6,8 @@ import csv
 
 unique_keyphrases = ["engineering",  "tecchnology",  "courses"]
 
-def extract_text_from_url(url, file_final):
-    output_filepath = os.path.join(output_folder,file_final + ".txt")
+def extract_text_from_url(url):
+    output_filepath = os.path.join(output_folder+ ".txt")
     response = requests.get(url)
     html_content = response.content
 
@@ -49,13 +49,12 @@ os.makedirs(output_folder, exist_ok=True)
 
 with open('web_scraped_data.csv', 'w', newline='', encoding="utf-8") as csv_file:
     file_add = csv.writer(csv_file)
-    file_add.writerow(["keyphrases", "links", "Content"])
+    file_add.writerow(["URL", "Content"])
 
     for keyphrase in unique_keyphrases:
         filtered_urls = [url for url in sorted_sublinks if keyphrase in url]
-        sitemap = sorted(filtered_urls, key=lambda url: -len(extract_text_from_url(url, '')))[:100]
+        sitemap = sorted(filtered_urls, key=lambda url: -len(extract_text_from_url(url)))[:100]
 
         for url in sitemap:
-            filename = url.replace('/', '_') + ".txt"
-            extracted_text = extract_text_from_url(url, filename)
-            file_add.writerow([keyphrase, url, extracted_text])
+            extracted_text = extract_text_from_url(url)
+            file_add.writerow([url, extracted_text])
