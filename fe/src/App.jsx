@@ -1,6 +1,7 @@
 import React from 'react';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
+import { UserChatLayout } from './components';
 const { Header, Content, Footer, Sider } = Layout;
 const App = () => {
   const {
@@ -27,7 +28,7 @@ const App = () => {
             (icon, index) => ({
               key: String(index + 1),
               icon: React.createElement(icon),
-              label: `ASK UTS CHAT ${index + 1}`,
+              label: `nav ${index + 1}`,
             }),
           )}
         />
@@ -39,21 +40,8 @@ const App = () => {
             background: colorBgContainer,
           }}
         />
-        <Content
-          style={{
-            margin: '24px 16px 0',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
-            content
-          </div>
-        </Content>
+        <UserChatLayout>
+        </UserChatLayout>
         <Footer
           style={{
             textAlign: 'center',
