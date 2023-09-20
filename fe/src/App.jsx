@@ -1,8 +1,8 @@
 import React from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { FormOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { UserChatLayout } from './components';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Footer, Sider } = Layout;
 const App = () => {
   const {
     token: { colorBgContainer },
@@ -24,7 +24,7 @@ const App = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['4']}
-          items={[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+          items={[FormOutlined].map(
             (icon, index) => ({
               key: String(index + 1),
               icon: React.createElement(icon),
@@ -47,7 +47,7 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-          Ant Design ©2023 Created by Ant UED
+          ASK UTS ©2023 MAKE UTS BETTER
         </Footer>
       </Layout>
     </Layout>
