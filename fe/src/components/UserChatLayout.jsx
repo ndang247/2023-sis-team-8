@@ -1,9 +1,9 @@
 import React from "react";
-import "../css/userChatLayoutStyles.css";
+import "@css/userChatLayoutStyles.css";
 
-import { Footer, ResponseLayout } from "../components";
+import { ResponseLayout } from "@components";
 
-export default function UserChatLayout() {
+export const UserChatLayout = () => {
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen">
@@ -24,9 +24,7 @@ export default function UserChatLayout() {
             </div>
           </button>
         </div>
-
-        <Footer />
       </div>
     </>
   );
-}
+};

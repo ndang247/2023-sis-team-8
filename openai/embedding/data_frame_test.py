@@ -7,13 +7,14 @@ import os
 cwd = os.getcwd()
 
 # Get all the files in that directory
-# files = os.listdir(cwd + '/OpenAI/embeddingFunctionality')
+# files = os.listdir(cwd + "/openai/embedding")
 # print("Files in %r: %s" % (cwd, files))
 
-# df = pd.read_csv(cwd + '/OpenAI/embeddingFunctionality/' + 'data.csv')  #read in data
-# df['embedding'] = df['text']
+# # Read in data
+# df = pd.read_csv(cwd + "/openai/embedding/data/" + "data.csv")
+# df["embedding"] = df["text"]
 
-# df.to_csv(cwd + '/OpenAI/embeddingFunctionality/' + 'test_output.csv')
+# df.to_csv(cwd + "/openai/embedding/data/" + "test_output.csv")
 
 df = pd.read_csv(cwd + "/openai/embedding/data/" + "word_similarities.csv")
 
