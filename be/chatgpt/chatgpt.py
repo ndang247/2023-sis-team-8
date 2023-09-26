@@ -11,7 +11,9 @@ os.environ["OPENAI_API_KEY"] = constants.APIKEY
 query = sys.argv[1]
 
 
-loader = TextLoader('uts_website_extracted/current_students_managing_your_course_important_dates_census_date.txt')
+loader = TextLoader(
+    "uts_website_extracted/current_students_managing_your_course_important_dates_census_date.txt"
+)
 
 index = VectorstoreIndexCreator().from_loaders([loader])
 

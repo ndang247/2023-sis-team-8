@@ -1,4 +1,3 @@
-
 ## Run Backend Server Locally
 
 Clone the project
@@ -16,13 +15,11 @@ Go to the project backend directory
 Install dependencies
 
 ```bash
-  pip install fastapi
+  pip install -r requirements.txt
 ```
+
 ```bash
   pip install typing-extensions --upgrade
-```
-```bash
-  pip install "uvicorn[standard]"
 ```
 
 Start the server
@@ -30,15 +27,16 @@ Start the server
 ```bash
   uvicorn main:app
 ```
+
 Add reload flag for auto-reload
+
 ```bash
   uvicorn main:app --reload
 ```
 
-
 ## API Documentation
 
-[ http://127.0.0.1:8000/docs]( http://127.0.0.1:8000/docs)
+[ http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 [ http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
@@ -49,9 +47,11 @@ Install dependencies
 ```bash
   pip install starlette
 ```
+
 ```bash
   pip install httpx
 ```
+
 ```bash
   pip install pytest
 ```
@@ -61,4 +61,3 @@ To run tests, run the following command
 ```bash
   pytest
 ```
-
