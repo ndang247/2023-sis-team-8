@@ -1,10 +1,12 @@
 import React from "react";
-import "../css/footerStyles.css";
-import utsLogo from "../assets/uts-logo.png";
+import { Layout } from "antd";
+const { Footer } = Layout;
+import "@css/footerStyles.css";
+import utsLogo from "@assets/uts-logo.png";
 
-export const Footer = () => {
+export const Bottom = () => {
   return (
-    <footer className="left-0 bottom-0 w-[100%] bg-[#0f4beb] text-[#fff]">
+    <Footer className="left-0 bottom-0 w-[100%] bg-[#0f4beb] text-[#fff]">
       <div className="mr-auto ml-auto w-[100%] lg:h-[5rem] max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
         <div className="inline-block float-left relative pl-[15px] pr-[15px] mt-[0.5rem] mb-[0.5rem]">
           <a
@@ -45,6 +47,6 @@ export const Footer = () => {
           </a>
         </div>
       </div>
-    </footer>
+    </Footer>
   );
 };
