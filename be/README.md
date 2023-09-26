@@ -6,7 +6,7 @@ Clone the project
   git clone https://github.com/ndang247/2023sis-team8.git
 ```
 
-Go to the project backend directory
+Go to the project back-end directory
 
 ```bash
   cd be
