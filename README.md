@@ -1,5 +1,13 @@
 # SIS-Project
 
+## How to use Docker Compose to run both the front end and backend at the same time 
+* Install Docker Compose
+*
+* https://docs.docker.com/compose/install/linux/
+
+
+
+
 ## Running The Front-end Locally
 * Clone the project either via HTTP or SSH (preferred)
 * Open the project in a terminal and `cd` or navigate into `fe` directory
