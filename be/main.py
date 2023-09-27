@@ -2,7 +2,7 @@ from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from be.models.models import Message, Answer
+from models.models import Message, Answer
 from pydantic import BaseModel
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
