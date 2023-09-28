@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "@css/userChatLayoutStyles.css";
 import { sendPrompt } from "@api";
 
 import { ResponseLayout } from "@components";
 
 export const UserChatLayout = () => {
+  const submitBtnRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(true);
   const [inputValue, setInputValue] = useState("");
 
@@ -12,11 +13,11 @@ export const UserChatLayout = () => {
     if (inputValue.length > 0) {
       setIsDisabled(false);
       // Remove opacity-40 class from button
-      document.getElementById("submit-button").classList.remove("opacity-40");
+      submitBtnRef.current.classList.remove("opacity-40");
     } else {
       setIsDisabled(true);
       // Add opacity-40 class to button
-      document.getElementById("submit-button").classList.add("opacity-40");
+      submitBtnRef.current.classList.add("opacity-40");
     }
   }, [inputValue]);
 
@@ -49,6 +50,7 @@ export const UserChatLayout = () => {
           <button
             id="submit-button"
             className="relative flex items-center justify-center w-[120px] h-[50px] rounded-full opacity-40 overflow-hidden bottom-0 bg-gradient-to-r from-blue-600 to-[#0f4beb] shadow-lg"
+            ref={submitBtnRef}
             disabled={isDisabled}
             onClick={handleSubmit}
           >
