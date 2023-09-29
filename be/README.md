@@ -1,14 +1,15 @@
-## Run both backend and front end servers with Docker Compose 
+## Run both back-end and front-end servers with Docker Compose
+
 Install Docker Desktop:
 https://docs.docker.com/compose/install/
 
 1. Make sure youre in the projects main directory
-2. type in the terminal: ```docker compose build```
-3. type in the terminal: ```docker compose up```
+2. type in the terminal: `docker compose build`
+3. type in the terminal: `docker compose up`
 
-This should startup both the frontend and backend servers
+- This should startup both the front-end and back-end servers
 
-## Run Back-end Server Locally
+## Running the back-end locally without Docker Compose
 
 Clone the project
 
@@ -30,14 +31,6 @@ Install dependencies
 
 ```bash
   pip install typing-extensions --upgrade
-```
-
-```bash
-  pip install pymongo
-```
-
-```bash
-  pip install python-dotenv
 ```
 
 Start the server

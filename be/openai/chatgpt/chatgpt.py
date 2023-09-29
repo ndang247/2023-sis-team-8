@@ -1,6 +1,6 @@
 import os
 import sys
-import be.chatgpt.constants as constants
+import be.openai.chatgpt.constants as constants
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.llms import OpenAI

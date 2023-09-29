@@ -1,14 +1,14 @@
-version: '3'
+version: "3"
 
 services:
   frontend:
     build:
-      context: ./fe  # Path to your Node.js application directory
+      context: ./fe # Path to your Node.js application directory
       dockerfile: Dockerfile-fe
     ports:
-      - "5173:5173"  # Expose the Node.js app's port
+      - "5173:5173" # Expose the Node.js app's port
 
   backend:
     build:
-      context: ./be  # Path to your Python application directory
+      context: ./be # Path to your Python application directory
       dockerfile: Dockerfile-be
