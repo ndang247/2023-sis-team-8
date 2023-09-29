@@ -10,7 +10,7 @@ embedding_model = "text-embedding-ada-002"  # Embedding Function, there are many
 openai.api_key = "sk-INSERTYOURKEYHERE"  # insert your OpenAI key here
 
 cwd = os.getcwd()
-df = pd.read_csv(cwd + "/openai/embedding/data/" + "data.csv")  # read in data
+df = pd.read_csv(cwd + "/openai/embedding/data/" + "web_scraped_data.csv")  # read in data
 
 # print(get_embedding("grape", engine='text-embedding-ada-002')) #This works and prints out an embedded vector
 
@@ -26,7 +26,7 @@ def embedFunc(text, model=embedding_model):  # embedding function
     return embeddings
 
 
-df["embedding"] = df["text"].apply(
+df["embedding"] = df["Content"].apply(
     lambda x: embedFunc(x, embedding_model)
 )  # making new coulum with embedded items
 
@@ -35,7 +35,7 @@ df["embedding"] = df["text"].apply(
 
 
 df.to_csv(
-    cwd + "/openai/embedding/data/" + "word_embeddings.csv"
+    cwd + "/openai/embedding/data/" + "embedded_web_scraped_data.csv"
 )  # exporting the embedded data into a new csv
 
 # df['embedding'] = df['text'].apply(lambda x: x.upper())
