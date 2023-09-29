@@ -14,7 +14,7 @@ secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
 DB_PASSWORD = secrets["DB_PASSWORD"]
 
-uri = (f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority")
+uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
 
