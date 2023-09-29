@@ -1,7 +1,9 @@
 fastapi
 uvicorn[standard]
 langchain
-chromadb==0.3.29
+chromadb
 tiktoken 
 unstructured
 openai
+pydantic
+pymongo
