@@ -22,6 +22,14 @@ Install dependencies
   pip install typing-extensions --upgrade
 ```
 
+```bash
+  pip install pymongo
+```
+
+```bash
+  pip install python-dotenv
+```
+
 Start the server
 
 ```bash

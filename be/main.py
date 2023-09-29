@@ -8,9 +8,13 @@ from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson import json_util
+from dotenv import dotenv_values
 
-# TODO env file
-uri = "mongodb+srv://dev:fgxF22djLWE1gGaN@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
+secrets = dotenv_values(".env")
+DB_USER = secrets["DB_USER"]
+DB_PASSWORD = secrets["DB_PASSWORD"]
+
+uri = (f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority")
 
 app = FastAPI()
 
