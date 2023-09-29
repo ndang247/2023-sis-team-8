@@ -1,5 +1,4 @@
-
-## Run Backend Server Locally
+## Run Back-end Server Locally
 
 Clone the project
 
@@ -7,7 +6,7 @@ Clone the project
   git clone https://github.com/ndang247/2023sis-team8.git
 ```
 
-Go to the project backend directory
+Go to the project back-end directory
 
 ```bash
   cd be
@@ -16,19 +15,19 @@ Go to the project backend directory
 Install dependencies
 
 ```bash
-  pip install fastapi
+  pip install -r requirements.txt
 ```
+
 ```bash
   pip install typing-extensions --upgrade
 ```
+
 ```bash
   pip install pymongo
 ```
+
 ```bash
   pip install python-dotenv
-```
-```bash
-  pip install "uvicorn[standard]"
 ```
 
 Start the server
@@ -36,15 +35,16 @@ Start the server
 ```bash
   uvicorn main:app
 ```
+
 Add reload flag for auto-reload
+
 ```bash
   uvicorn main:app --reload
 ```
 
-
 ## API Documentation
 
-[ http://127.0.0.1:8000/docs]( http://127.0.0.1:8000/docs)
+[ http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 [ http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
@@ -55,9 +55,11 @@ Install dependencies
 ```bash
   pip install starlette
 ```
+
 ```bash
   pip install httpx
 ```
+
 ```bash
   pip install pytest
 ```
@@ -67,4 +69,3 @@ To run tests, run the following command
 ```bash
   pytest
 ```
-
