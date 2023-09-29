@@ -3,8 +3,8 @@ Install Docker Desktop:
 https://docs.docker.com/compose/install/
 
 1. Make sure youre in the projects main directory
-2. type in the terminal: docker compose build
-3. type in the terminal: docker compose up
+2. type in the terminal: ```docker compose build```
+3. type in the terminal: ```docker compose up```
 
 This should startup both the frontend and backend servers
 
