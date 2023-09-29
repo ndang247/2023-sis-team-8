@@ -1,6 +1,5 @@
 pydantic
 datetime
-bson
 langchain
 pandas
 openai
