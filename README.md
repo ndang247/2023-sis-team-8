@@ -4,9 +4,9 @@
 * Install Docker Compose
 * https://docs.docker.com/compose/install/linux/
 
-*1. Make sure youre in the projects main directory
-*2. type in the terminal: ```docker compose build```
-*3. type in the terminal: ```docker compose up```
+1. Make sure youre in the projects main directory
+2. type in the terminal: ```docker compose build```
+3. type in the terminal: ```docker compose up```
 
 *This should startup both the frontend and backend servers
 
