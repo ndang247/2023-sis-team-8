@@ -13,7 +13,7 @@ openai.api_key = "sk-INSERTYOURKEYHERE"
 
 cwd = os.getcwd()
 # Read in data
-df = pd.read_csv(cwd + "/openai/embedding/data/" + "data.csv")
+df = pd.read_csv(cwd + "/openai/embedding/data/" + "web_scraped_data.csv")
 
 # This works and prints out an embedded vector
 # print(get_embedding("grape", engine="text-embedding-ada-002"))
@@ -32,7 +32,7 @@ def embedFunc(text, model=embedding_model):
 
 
 # Making new coulum with embedded items
-df["embedding"] = df["text"].apply(lambda x: embedFunc(x, embedding_model))
+df["embedding"] = df["Content"].apply(lambda x: embedFunc(x, embedding_model))
 
 
 # This does not work most likely because of some formatting issue
@@ -42,7 +42,7 @@ df["embedding"] = df["text"].apply(lambda x: embedFunc(x, embedding_model))
 
 
 # Exporting the embedded data into a new csv
-df.to_csv(cwd + "/openai/embedding/data/" + "word_embeddings.csv")
+df.to_csv(cwd + "/openai/embedding/data/" + "embedded_web_scraped_data.csv")
 
 # df["embedding"] = df["text"].apply(lambda x: x.upper())
 
