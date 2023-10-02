@@ -4,10 +4,11 @@ openai.api_key = "sk-INSERTYOURKEYHERE"
 
 # Script to fine tune with jsonl data
 # Training the model. Should work need to upgrade to paid plan to test later though
-openai.FineTuningJob.create(
-    training_file="file-C4kGJBNuYfUowtpJQU1Mqlum", model="gpt-3.5-turbo"
+resp = openai.FineTuningJob.create(
+    training_file="file-PTooT3tExLYV07BtS2F6ZIJN", model="gpt-3.5-turbo"
 )
 
+print(resp)
 """ 
 Other commands you can use
 
