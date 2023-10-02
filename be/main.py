@@ -7,7 +7,8 @@ from pydantic import BaseModel
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from bson import json_util
+from bson import json_util, ObjectId
+from bson.errors import InvalidId
 from dotenv import dotenv_values
 
 secrets = dotenv_values(".env")
@@ -59,6 +60,30 @@ async def send_message(message: Message):
 
     return answer
 
+@app.get("/chat_read/{message_id}")
+async def read_message(message_id: str):
+    try:
+        objInstance = ObjectId(message_id)
+        query = {"_id": objInstance}
+        filter = {"_id": 0}
+        result = col.find_one(query, filter)
+
+        if result is not None:
+            return result
+        else:
+            print("test")
+            raise HTTPException(
+                status_code=404,
+                detail=f"'{message_id}' does not exist!"
+            )
+
+    except InvalidId as e:
+        print(e)
+        raise HTTPException(
+            status_code=400,
+            detail=f"'{message_id}' is not a valid id, it must be a 12-byte input or a 24-character hex string"
+            )
+    
 
 @app.post("/chat_save")
 async def save_response(answer: Answer):
