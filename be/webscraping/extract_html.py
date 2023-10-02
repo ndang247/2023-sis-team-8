@@ -6,21 +6,24 @@ import csv
 
 unique_keyphrases = ["engineering", "tecchnology", "courses"]
 
-
-def extract_text_from_url(url):
+def get_html_from_url(url):
     output_filepath = os.path.join(output_folder + ".txt")
     response = requests.get(url)
     html_content = response.content
+    return html_content
 
-    soup = bs4.BeautifulSoup(html_content, "html.parser")
-
+def get_paragraphs_from_text(soup): #easy to unit test without patching
     paragraph_tags = soup.find_all("p")
     paragraph_tags = paragraph_tags[:-4]
-
     paragraph_text = [p.get_text() for p in paragraph_tags]
 
     text = "\n".join(paragraph_text)
 
+    return text
+
+def get_text_from_table(soup): #easy to unit test without patching
+    '''takes a beautiful soup object and returns all table text'''
+    text = ''
     table_tag = soup.find_all("table")
     for table_index, table in enumerate(table_tag):
         table_text = []
@@ -31,7 +34,11 @@ def extract_text_from_url(url):
             row_content = [cell.get_text() for cell in data_content]
             table_text.append("\t".join(row_content))
         text += "\nTable {}:".format(table_index + 1) + "\n" + "\n".join(table_text)
+    
+    return text
 
+def get_text_from_collapsible(soup): #easy to unit test without patching
+    text = ''
     dropdown_content = soup.find_all("section", class_="collapsible")
     for index, dropdown in enumerate(dropdown_content):
         dropdown_title = dropdown.find("h3", class_="js-collapsible collapsible__title")
@@ -45,6 +52,17 @@ def extract_text_from_url(url):
 
     return text
 
+def extract_text_from_url(url): #need to patch get_paragaphs_from_test, gest_test_from_table, get_text_from_collapsible
+    html_content = get_html_from_url(url)
+    soup = bs4.BeautifulSoup(html_content, "html.parser")
+
+    paragraph_text = get_paragraphs_from_text(soup)
+    table_text = get_text_from_table(soup)
+    collapsible_text = get_text_from_collapsible(soup)
+
+    all_text = paragraph_text + "\n" + table_text + "\n" + collapsible_text
+
+    return all_text
 
 output_folder = "uts_website_extracted"
 os.makedirs(output_folder, exist_ok=True)
