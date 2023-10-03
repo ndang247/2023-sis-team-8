@@ -49,9 +49,9 @@ export const Sidebar = () => {
             </span>
           }
         >
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-          <Menu.Item key="3">Option 3</Menu.Item>
+          <Menu.Item key="1">Convo 1</Menu.Item>
+          <Menu.Item key="2">Convo 2</Menu.Item>
+          <Menu.Item key="3">Convo 3</Menu.Item>
         </SubMenu>
         <Menu.Item key="2" icon={<UserOutlined />}>
           Contact Us
