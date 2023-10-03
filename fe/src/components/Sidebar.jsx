@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   ContainerOutlined,
   UserOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Input } from "antd";
@@ -28,7 +26,9 @@ export const Sidebar = () => {
       }}
       style={{ backgroundColor: "#123286" }}
     >
-      <div className="demo-logo-vertical" />
+       <div className="demo-logo-vertical">
+        <img src="uts-logo.png" alt="Logo" style={{ width: '60%', height: 'auto', paddingLeft: '10px', paddingTop: '15px' }} />
+      </div>
       <Input
         prefix={<SearchOutlined style={{ color: 'rgba(118, 118, 118, 0.5)' }} />} 
         placeholder="Search"
@@ -57,7 +57,7 @@ export const Sidebar = () => {
           Contact Us
         </Menu.Item>
       </Menu>
-      <div style={{ textAlign: 'center', color: 'white', paddingTop: '25px' }}>To speak to someone, please call 1300 ASK UTS</div>
+      <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px' }}>To speak to someone, please call 1300 ASK UTS</div>
     </Sider>
   );
 };
