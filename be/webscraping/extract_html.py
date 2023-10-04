@@ -4,13 +4,14 @@ import requests
 import os
 import csv
 
-unique_keyphrases = ["engineering", "tecchnology", "courses"]
+unique_keyphrases = ["engineering", "technology", "courses"]
+
 
 def get_html_from_url(url):
-    output_filepath = os.path.join(output_folder + ".txt")
     response = requests.get(url)
     html_content = response.content
     return html_content
+
 
 def get_paragraphs_from_text(soup):
     paragraph_tags = soup.find_all("p")
@@ -19,6 +20,7 @@ def get_paragraphs_from_text(soup):
     text = ' '.join(text.split())
 
     return text
+
 
 def get_text_from_table(soup):
     text = ''
@@ -31,26 +33,30 @@ def get_text_from_table(soup):
             data_content = row.find_all(["th", "td"])
             row_content = [cell.get_text() for cell in data_content]
             table_text.append("\t".join(row_content))
-        text += "\nTable {}:".format(table_index + 1) + "\n" + "\n".join(table_text)
-    
+        text += "\nTable {}:".format(table_index + 1) + \
+            "\n" + "\n".join(table_text)
+
     return text
+
 
 def get_text_from_collapsible(soup):
     text = ''
     dropdown_content = soup.find_all("section", class_="collapsible")
     for index, dropdown in enumerate(dropdown_content):
-        dropdown_title = dropdown.find("h3", class_="js-collapsible collapsible__title")
+        dropdown_title = dropdown.find(
+            "h3", class_=lambda x: x and "collapsible__title" in x.split())
         dropdown_content = dropdown.find("div", class_="collapsible__content")
 
         if dropdown_title and dropdown_content:
             title_txt = dropdown_title.get_text()
             content_txt = dropdown_content.get_text()
 
-            text += f"\nCollapsible Section {index + 1}: {title_txt}\n{content_txt}"
+            text += f"\n{title_txt}\n{content_txt}"
 
     return text
 
-def extract_text_from_url(url): 
+
+def extract_text_from_url(url):
     html_content = get_html_from_url(url)
     soup = bs4.BeautifulSoup(html_content, "html.parser")
 
@@ -59,8 +65,9 @@ def extract_text_from_url(url):
     collapsible_text = get_text_from_collapsible(soup)
 
     all_text = paragraph_text + "\n" + table_text + "\n" + collapsible_text
-
+    print(all_text)
     return all_text
+
 
 output_folder = "uts_website_extracted"
 os.makedirs(output_folder, exist_ok=True)
