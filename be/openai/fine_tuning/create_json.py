@@ -1,7 +1,7 @@
 import json
 
 # Simple json creation script for potential use when using/formatting web scraped data into trainable format
-file = "training_data.jsonl"
+file = "data/training_data.jsonl"
 
 
 def write_json(data, filename="training_data.jsonl"):
