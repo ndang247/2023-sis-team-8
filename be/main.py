@@ -10,6 +10,11 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
+import pandas as pd
+
+##Issues with importing modules from openai/embedding possibly due to naming package openai?
+##Making a copy to be root as a temporary fix
+from embedding_search_prototype import embedding_search
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
@@ -22,7 +27,6 @@ app = FastAPI()
 client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["askUTSApp"]
 col = db["messages"]
-
 
 @app.get("/")
 async def read_root():
@@ -56,7 +60,12 @@ async def send_message(message: Message):
             + " characters provided!",
         )
 
-    answer = Answer(message=message, timeStamp=datetime.now())
+    df = embedding_search(message.text)
+
+    text = df['text'].iloc[0]
+    
+
+    answer = Answer(message=message, timeStamp=datetime.now(), answer=text)
 
     return answer
 
