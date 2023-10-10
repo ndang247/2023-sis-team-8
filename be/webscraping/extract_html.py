@@ -1,87 +1,93 @@
-from extract_sitemap import sorted_sublinks
 import bs4
 import requests
 import os
 import csv
-
-unique_keyphrases = ["engineering", "technology", "courses"]
-
-
-def get_html_from_url(url):
-    response = requests.get(url)
-    html_content = response.content
-    return html_content
+from extract_sitemap import get_urls_from_sitemap
 
 
-def get_paragraphs_from_text(soup):
-    paragraph_tags = soup.find_all("p")
-    paragraph_text = [p.get_text() for p in paragraph_tags]
-    text = " ".join(paragraph_text)
-    text = ' '.join(text.split())
-
-    return text
+def get_response_from_url(url):
+    return requests.get(url).content
 
 
-def get_text_from_table(soup):
+def get_paragraph_text(soup):
+    paragraph_tags = soup.find_all("p")[:-4]
+    return "\n".join([p.get_text() for p in paragraph_tags])
+
+
+def get_table_text(soup):
     text = ''
-    table_tag = soup.find_all("table")
-    for table_index, table in enumerate(table_tag):
+    for table_index, table in enumerate(soup.find_all("table")):
         table_text = []
-        rows = table.find_all("tr")
-
-        for row in rows:
-            data_content = row.find_all(["th", "td"])
-            row_content = [cell.get_text() for cell in data_content]
+        for row in table.find_all("tr"):
+            row_content = [cell.get_text()
+                           for cell in row.find_all(["th", "td"])]
             table_text.append("\t".join(row_content))
         text += "\nTable {}:".format(table_index + 1) + \
             "\n" + "\n".join(table_text)
-
     return text
 
 
-def get_text_from_collapsible(soup):
+def get_collapsible_text(soup):
     text = ''
-    dropdown_content = soup.find_all("section", class_="collapsible")
-    for index, dropdown in enumerate(dropdown_content):
+    for index, dropdown in enumerate(soup.find_all("section", class_="collapsible")):
         dropdown_title = dropdown.find(
-            "h3", class_=lambda x: x and "collapsible__title" in x.split())
+            "h3", class_="js-collapsible collapsible__title")
         dropdown_content = dropdown.find("div", class_="collapsible__content")
-
         if dropdown_title and dropdown_content:
             title_txt = dropdown_title.get_text()
             content_txt = dropdown_content.get_text()
-
-            text += f"\n{title_txt}\n{content_txt}"
-
+            text += f"\nCollapsible Section {index + 1}: {title_txt}\n{content_txt}"
     return text
 
 
 def extract_text_from_url(url):
-    html_content = get_html_from_url(url)
-    soup = bs4.BeautifulSoup(html_content, "html.parser")
-
-    paragraph_text = get_paragraphs_from_text(soup)
-    table_text = get_text_from_table(soup)
-    collapsible_text = get_text_from_collapsible(soup)
-
-    all_text = paragraph_text + "\n" + table_text + "\n" + collapsible_text
-    print(all_text)
-    return all_text
+    try:
+        html_content = get_response_from_url(url)
+        soup = bs4.BeautifulSoup(html_content, "html.parser")
+        content = get_paragraph_text(
+            soup) + get_table_text(soup) + get_collapsible_text(soup)
+        return content.strip()
+    except Exception as e:
+        return f"Error extracting content from {url}: {str(e)}"
 
 
 output_folder = "uts_website_extracted"
 os.makedirs(output_folder, exist_ok=True)
 
-with open("web_scraped_data.csv", "w", newline="", encoding="utf-8") as csv_file:
-    file_add = csv.writer(csv_file)
-    file_add.writerow(["URL", "Content"])
+tracking_urls = set()
 
-    for keyphrase in unique_keyphrases:
-        filtered_urls = [url for url in sorted_sublinks if keyphrase in url]
-        sitemap = sorted(
-            filtered_urls, key=lambda url: -len(extract_text_from_url(url))
-        )[:100]
 
-        for url in sitemap:
+def write_to_csv(file, data):
+    writer = csv.writer(file)
+    writer.writerow(data)
+
+
+def filter_urls_by_keyphrase(urls, keyphrase):
+    return [url for url in urls if keyphrase in url]
+
+
+def get_100_urls(urls):
+    return sorted(urls, key=lambda url: -len(extract_text_from_url(url)))[:100]
+
+
+def write_urls(file, urls):
+    for url in urls:
+        if url not in tracking_urls:
+            print(f"Extracting content from {url}")
             extracted_text = extract_text_from_url(url)
-            file_add.writerow([url, extracted_text])
+            print(f"Extracted from {url}")
+            write_to_csv(file, [url, extracted_text])
+            tracking_urls.add(url)
+
+
+sitemap_base_url = "https://www.uts.edu.au/sitemap.xml?page="
+num_pages = 13
+
+sitemap_urls = [sitemap_base_url + str(i) for i in range(1, num_pages + 1)]
+
+with open("web_scraped_data.csv", "w", newline="", encoding="utf-8") as csv_file:
+    write_to_csv(csv_file, ["URL", "Content"])
+
+    for url in sitemap_urls:
+        urls_to_scrape = get_urls_from_sitemap(url)
+        write_urls(csv_file, urls_to_scrape)
