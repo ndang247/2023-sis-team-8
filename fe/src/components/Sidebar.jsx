@@ -57,6 +57,13 @@ export const Sidebar = () => {
           Contact Us
         </Menu.Item>
       </Menu>
+      <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px', paddingBottom: '25px' }}>To save this conversation, please login</div>
+      <Menu>
+        <br></br>
+        <Menu.Item key="1" icon={<UserOutlined />}>
+          Login
+        </Menu.Item>
+      </Menu>
       <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px' }}>To speak to someone, please call 1300 ASK UTS</div>
     </Sider>
   );
