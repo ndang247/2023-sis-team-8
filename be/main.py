@@ -3,7 +3,6 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from models.models import Message, Answer
-from pydantic import BaseModel
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -51,7 +50,7 @@ async def send_message(message: Message):
                 now.strftime("%Y-%m-%d %H:%M:%S.%f"),
             ),
         )
-
+ 
     if len(message.text) > 1000:
         raise HTTPException(
             status_code=400,
@@ -60,13 +59,15 @@ async def send_message(message: Message):
             + " characters provided!",
         )
 
-    df = embedding_search(message.text)
-
-    text = df['text'].iloc[0]
+    try:
+        df = embedding_search(message.text)
+        text = df['text'].iloc[0]
+        sim = df['similarities'].loc[0]
+        answer = Answer(message=message, timeStamp=datetime.now(), answer=text, similarity=sim)
+    except Exception as e:
+        print(e)
+        answer = Answer(message=message, timeStamp=datetime.now())
     
-
-    answer = Answer(message=message, timeStamp=datetime.now(), answer=text)
-
     return answer
 
 @app.get("/chat_read/")
