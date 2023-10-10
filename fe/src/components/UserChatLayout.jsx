@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "@css/userChatLayoutStyles.css";
-import { sendPrompt } from "@api";
+import { sendPrompt } from '../api';
 
 import { ResponseLayout } from "@components";
 
