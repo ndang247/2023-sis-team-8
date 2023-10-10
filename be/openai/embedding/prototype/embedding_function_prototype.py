@@ -13,17 +13,11 @@ openai.api_key = "sk-INSERTYOURKEYHERE"
 
 cwd = os.getcwd()
 # Read in data
-df = pd.read_csv(cwd + "/openai/embedding/data/" + "data.csv")
-
-# This works and prints out an embedded vector
-# print(get_embedding("grape", engine="text-embedding-ada-002"))
-
-# This should work but it doesnt and I think it may be a bug
-# df["embedding"] = df["text"].apply(lambda x: get_embedding(x, engine=embedding_model))
+df = pd.read_csv(cwd + "/data/" + "test_data.csv")
 
 
 # Embedding function
-def embedFunc(text, model=embedding_model):
+def generate_embedding(text, model=embedding_model):
     text = text.replace("\n", " ")
     # This Works but only for like 2 values any more you need the paid version doesn't really tell you the rates. I will upgrade later and test
     result = openai.Embedding.create(input=[text], model=model)
@@ -32,18 +26,10 @@ def embedFunc(text, model=embedding_model):
 
 
 # Making new coulum with embedded items
-df["embedding"] = df["text"].apply(lambda x: embedFunc(x, embedding_model))
-
-
-# This does not work most likely because of some formatting issue
-# df["embedding"] = df["text"].apply(
-#     lambda x: openai.Embedding.create(x, engine=embedding_model)
-# )
+df["embedding"] = df["text"].apply(lambda x: generate_embedding(x, embedding_model))
 
 
 # Exporting the embedded data into a new csv
-df.to_csv(cwd + "/openai/embedding/data/" + "word_embeddings.csv")
-
-# df["embedding"] = df["text"].apply(lambda x: x.upper())
+df.to_csv(cwd + "/data/" + "test_data_embedding.csv")
 
 print(df)

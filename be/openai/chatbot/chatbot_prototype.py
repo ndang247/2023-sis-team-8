@@ -6,7 +6,7 @@ openai.api_key = "sk-INSERTYOURKEYHERE"
 messages = [
     {
         "role": "system",
-        "content": "You are a helpful AI course recommender",
+        "content": "You are a helpful UTS AI assistant. You can ask me questions about UTS and I will try my best to answer them.",
     }
 ]
 
