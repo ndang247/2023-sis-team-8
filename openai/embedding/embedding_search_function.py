@@ -10,7 +10,7 @@ from openai.embeddings_utils import cosine_similarity
 embedding_model = "text-embedding-ada-002"
 
 # Insert your OpenAI key here
-openai.api_key = "sk-INSERTYOURKEYHERE"
+openai.api_key = "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"
 
 # Read in data
 cwd = os.getcwd()
