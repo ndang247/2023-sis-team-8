@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "@css/responseLayoutStyles.css";
-import { Typewriter } from "@components";
+import { Typewriter, FeedbackSlider } from "@components";
 import { sendPrompt } from "@api";
 
 export const ResponseLayout = () => {
@@ -116,6 +116,7 @@ export const ResponseLayout = () => {
             capability is especially beneficial in applications like customer
             support chatbots, manufacturing processes, and surveillance systems.
           </p>
+          <FeedbackSlider min={0} max={10} />
         </div>
         <div className="flex justify-center relative mt-[1.5rem] w-[100%]">
           <input
