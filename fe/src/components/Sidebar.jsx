@@ -3,6 +3,8 @@ import {
   ContainerOutlined,
   UserOutlined,
   SearchOutlined,
+  BarsOutlined,
+  PhoneOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Input } from "antd";
 const { Sider } = Layout;
@@ -49,11 +51,11 @@ export const Sidebar = () => {
             </span>
           }
         >
-          <Menu.Item key="1">Convo 1</Menu.Item>
-          <Menu.Item key="2">Convo 2</Menu.Item>
-          <Menu.Item key="3">Convo 3</Menu.Item>
+          <Menu.Item key="1"> <BarsOutlined /> Convo 1</Menu.Item>
+          <Menu.Item key="2"> <BarsOutlined /> Convo 2</Menu.Item>
+          <Menu.Item key="3"> <BarsOutlined /> Convo 3</Menu.Item>
         </SubMenu>
-        <Menu.Item key="2" icon={<UserOutlined />}>
+        <Menu.Item key="2" icon={<PhoneOutlined />}>
           Contact Us
         </Menu.Item>
       </Menu>
