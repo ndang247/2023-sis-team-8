@@ -2,7 +2,7 @@ import openai
 import pandas as pd
 import numpy as np
 import os
-import vector_db
+from . import vector_db
 
 from openai.embeddings_utils import get_embedding
 
