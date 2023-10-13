@@ -2,6 +2,7 @@ from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from fastapi.middleware.cors import CORSMiddleware   # Importing the middleware
 from models.models import Message, Answer
 from pydantic import BaseModel
 from datetime import datetime
@@ -17,6 +18,19 @@ DB_PASSWORD = secrets["DB_PASSWORD"]
 uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*", "OPTIONS"],
+    allow_headers=["*"],
+)
+
 
 client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["askUTSApp"]
@@ -38,7 +52,7 @@ async def send_message(message: Message):
         raise HTTPException(status_code=400, detail="No message sent!")
 
     """ Deal with different timezones? """
-    if message.timeStamp > datetime.astimezone(now):
+    if message.timeStamp.astimezone() > now.astimezone():
         raise HTTPException(
             status_code=400,
             detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(

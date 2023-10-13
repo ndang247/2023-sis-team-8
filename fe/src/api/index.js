@@ -1,14 +1,19 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1",
+  baseURL: "http://127.0.0.1:8000",
 });
 
 export const sendPrompt = async (prompt) => {
   console.log("Sending prompt:", prompt);
 
   try {
-    const response = await api.post("/chat", prompt, {
+    const fullPrompt = {
+      ...prompt,
+      timeStamp: new Date().toISOString()
+    };
+    
+    const response = await api.post("/chat", fullPrompt, {
       headers: {
         "Content-Type": "application/json",
       },
