@@ -10,6 +10,7 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
+import openai
 import pandas as pd
 import os
 from pydantic import BaseModel
@@ -17,7 +18,7 @@ from pydantic import BaseModel
 print("main file called")
 ##Issues with importing modules from openai/embedding possibly due to naming package openai?
 ##Making a copy to be root as a temporary fix
-from ai.embedding.embedding_search_function import embedding_search
+#from ai.embedding.embedding_search_function import embedding_search
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
@@ -52,36 +53,47 @@ async def send_message(message: Message):
 
     if message.text == "":
         raise HTTPException(status_code=400, detail="No message sent!")
+    
+    # """ Deal with different timezones? """
+    # if message.timeStamp.astimezone() > now.astimezone():
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
+    #             message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
+    #             now.strftime("%Y-%m-%d %H:%M:%S.%f"),
+    #         ),
+    #     )
 
-    """ Deal with different timezones? """
-    if message.timeStamp.astimezone() > now.astimezone():
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
-                message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
-                now.strftime("%Y-%m-%d %H:%M:%S.%f"),
-            ),
-        )
+    # if len(message.text) > 1000:
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Message character limit exceeded: "
+    #         + str(len(message.text))
+    #         + " characters provided!",
+    #     )
 
-    if len(message.text) > 1000:
-        raise HTTPException(
-            status_code=400,
-            detail="Message character limit exceeded: "
-            + str(len(message.text))
-            + " characters provided!",
-        )
-
-    try:
-        df = embedding_search(message.text)
-        text = df["text"].iloc[0]
-        sim = df["similarities"].loc[0]
-        answer = Answer(
-            message=message, timeStamp=datetime.now(), answer=text, similarity=sim
-        )
-    except Exception as e:
-        print(e)
-        answer = Answer(message=message, timeStamp=datetime.now())
-
+  
+    # df = embedding_search(message.text)
+    # text = df['text'].iloc[0]
+    # sim = df['similarities'].loc[0]
+    #try to get chatbot working
+    openai.api_key = ''
+    messages = [ {"role": "system", "content":  
+                "You are a intelligent assistant."} ] 
+    if message.text: 
+        messages.append( 
+            {"role": "user", "content": message.text}, 
+        ) 
+        print(messages)
+        chat = openai.ChatCompletion.create( 
+            model="gpt-3.5-turbo", messages=messages 
+        ) 
+    reply = chat.choices[0].message.content 
+    print("chatgpt: ", reply)
+    messages.append({"role": "assistant", "content": reply}) 
+    
+    answer = Answer(message=message, timeStamp=datetime.now(),
+                    answer=reply, similarity=0)
     return answer
 
 
