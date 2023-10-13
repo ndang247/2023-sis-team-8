@@ -10,11 +10,11 @@ from openai.embeddings_utils import cosine_similarity
 embedding_model = "text-embedding-ada-002"
 
 # Insert your OpenAI key here
-openai.api_key = "sk-INSERTYOURKEYHERE"
+openai.api_key = "sk-INSERTKEYHERE"
 
 # Read in data
 cwd = os.getcwd()
-df = pd.read_csv(cwd + "/openai/embedding/data/" + "embedded_web_scraped_data.csv")
+df = pd.read_csv(cwd + "/data/" + "test_data_embedding.csv")
 
 # Convert data into python code and convert it into a numpy array to perform calculations
 df["embedding"] = df["embedding"].apply(eval).apply(np.array)
@@ -24,13 +24,13 @@ search_term = input("Enter a search term: ")
 
 search_term_vector = get_embedding(search_term, engine=embedding_model)
 
-# Comparing vector similarities using cosine similarity function and sorts dataframe in ascending order
+# Comparing vector similarities using cosine similarity function and sorts data frame in ascending order
 df["similarities"] = df["embedding"].apply(
     lambda x: cosine_similarity(x, search_term_vector)
 )
 df = df.sort_values("similarities", ascending=False)
 
 # Exporting the embedded data into a new csv
-df.to_csv(cwd + "/openai/embedding/data/" + "web_scraped_word_similarities.csv")
+df.to_csv(cwd + "/data/" + "test_data_embedding_similarities.csv")
 
 print(df)

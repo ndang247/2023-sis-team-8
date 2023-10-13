@@ -3,7 +3,6 @@ import sys
 import be.openai.chatgpt.constants as constants
 from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
-from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 
 os.environ["OPENAI_API_KEY"] = constants.APIKEY
