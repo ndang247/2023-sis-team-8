@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-from models.models import  Answer, Message
+from models.models import Message, Answer
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -40,6 +40,7 @@ client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["askUTSApp"]
 col = db["messages"]
 
+
 @app.get("/")
 async def read_root():
     return {"Hello": "World"}
@@ -60,7 +61,7 @@ async def send_message(message: Message):
                 now.strftime("%Y-%m-%d %H:%M:%S.%f"),
             ),
         )
- 
+
     if len(message.text) > 1000:
         raise HTTPException(
             status_code=400,
@@ -73,19 +74,21 @@ async def send_message(message: Message):
         df = embedding_search(message.text)
         text = df['text'].iloc[0]
         sim = df['similarities'].loc[0]
-        answer = Answer(message=message, timeStamp=datetime.now(), answer=text, similarity=sim)
+        answer = Answer(message=message, timeStamp=datetime.now(),
+                        answer=text, similarity=sim)
     except Exception as e:
         print(e)
         answer = Answer(message=message, timeStamp=datetime.now())
-    
+
     return answer
+
 
 @app.get("/chat_read/")
 async def read_message(message_id: Union[str, None] = None):
     filter = {"_id": 0}
 
     if message_id:
-        ##return individual response if message_id param provided 
+        # return individual response if message_id param provided
         try:
             objInstance = ObjectId(message_id)
             query = {"_id": objInstance}
@@ -94,26 +97,26 @@ async def read_message(message_id: Union[str, None] = None):
             if result is not None:
                 return result
             else:
-                ##no results found
+                # no results found
                 raise HTTPException(
                     status_code=404,
                     detail=f"'{message_id}' does not exist!"
                 )
         except InvalidId as e:
-            ##invalid id provided
+            # invalid id provided
             print(e)
             raise HTTPException(
                 status_code=400,
                 detail=f"'{message_id}' is not a valid id, it must be a 12-byte input or a 24-character hex string"
-                )
+            )
     else:
-        ##return all results in collection
+        # return all results in collection
         result = list(col.find({}))
-        ##ObjectId to str
+        # ObjectId to str
         for document in result:
             document['_id'] = str(document['_id'])
         return result
-    
+
 
 @app.post("/chat_save")
 async def save_response(answer: Answer):
