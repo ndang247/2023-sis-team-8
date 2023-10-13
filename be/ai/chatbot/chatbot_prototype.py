@@ -1,6 +1,5 @@
 import openai
 import pprint
-import json
 
 openai.api_key = "sk-INSERTYOURKEYHERE"
 

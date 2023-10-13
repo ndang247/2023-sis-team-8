@@ -1,10 +1,15 @@
 import pinecone
 import ast
+from dotenv import dotenv_values
+
+secrets = dotenv_values(".env")
+PINECONE_API_KEY = secrets["PINECONE_API_KEY"]
 
 # Initialize Pinecone
-pinecone.init(api_key="", environment="gcp-starter")
+pinecone.init(api_key=PINECONE_API_KEY, environment="gcp-starter")
 
 index = pinecone.Index("ask-uts")
+
 
 def insert(df):
     # Convert the string representation of the embedding into a vector

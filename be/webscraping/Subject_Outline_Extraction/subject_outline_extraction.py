@@ -1,27 +1,26 @@
-import requests 
+import requests
 import tiktoken
 
-class SubjectOutlineExtracter:
 
+class SubjectOutlineExtracter:
     def create_pdf_url(subject_number, year, session):
-        return f'https://cis-admin-api.uts.edu.au/subject-outlines/index.cfm/PDFs?lastGenerated=true&lastGenerated=true&subjectCode={subject_number}&year={year}&session={session}&mode=standard&location=city'
-        
+        return f"https://cis-admin-api.uts.edu.au/subject-outlines/index.cfm/PDFs?lastGenerated=true&lastGenerated=true&subjectCode={subject_number}&year={year}&session={session}&mode=standard&location=city"
+
     def exclude_generic_content(text):
-        '''many subject outlines contain generic information that takes up too much of the page'''
+        """many subject outlines contain generic information that takes up too much of the page"""
         return text.partition("Academic liaison officer")[1]
 
     def get_subject_outline_pdf_from_url(self, subject_number):
-
-        year = '2023'
-        sessions = 'SPR'
+        year = "2023"
+        sessions = "SPR"
         url = self.create_pdf_url(subject_number)
 
         def get_html_from_url(url):
             response = requests.get(url)
             html_content = response.content
             return html_content
-        
-        def get_text_from_html(soup): #easy to unit test without patching
+
+        def get_text_from_html(soup):  # easy to unit test without patching
             paragraph_tags = soup.find_all("p")
             paragraph_tags = paragraph_tags[:-4]
             paragraph_text = [p.get_text() for p in paragraph_tags]
@@ -39,8 +38,6 @@ class SubjectOutlineExtracter:
         encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
         token_count = len(encoding.encode(context))
         if token_count > token_limit:
-            raise Exception("Handbook Extractor: Context exceeded 8000 tokens, please reduce the amount of URLs in this context")
-
-
-
-
+            raise Exception(
+                "Handbook Extractor: Context exceeded 8000 tokens, please reduce the amount of URLs in this context"
+            )

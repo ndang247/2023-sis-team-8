@@ -15,23 +15,20 @@ def get_paragraph_text(soup):
 
 
 def get_table_text(soup):
-    text = ''
+    text = ""
     for table_index, table in enumerate(soup.find_all("table")):
         table_text = []
         for row in table.find_all("tr"):
-            row_content = [cell.get_text()
-                           for cell in row.find_all(["th", "td"])]
+            row_content = [cell.get_text() for cell in row.find_all(["th", "td"])]
             table_text.append("\t".join(row_content))
-        text += "\nTable {}:".format(table_index + 1) + \
-            "\n" + "\n".join(table_text)
+        text += "\nTable {}:".format(table_index + 1) + "\n" + "\n".join(table_text)
     return text
 
 
 def get_collapsible_text(soup):
-    text = ''
+    text = ""
     for index, dropdown in enumerate(soup.find_all("section", class_="collapsible")):
-        dropdown_title = dropdown.find(
-            "h3", class_="js-collapsible collapsible__title")
+        dropdown_title = dropdown.find("h3", class_="js-collapsible collapsible__title")
         dropdown_content = dropdown.find("div", class_="collapsible__content")
         if dropdown_title and dropdown_content:
             title_txt = dropdown_title.get_text()
@@ -44,8 +41,9 @@ def extract_text_from_url(url):
     try:
         html_content = get_response_from_url(url)
         soup = bs4.BeautifulSoup(html_content, "html.parser")
-        content = get_paragraph_text(
-            soup) + get_table_text(soup) + get_collapsible_text(soup)
+        content = (
+            get_paragraph_text(soup) + get_table_text(soup) + get_collapsible_text(soup)
+        )
         return content.strip()
     except Exception as e:
         return f"Error extracting content from {url}: {str(e)}"
