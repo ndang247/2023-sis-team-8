@@ -3,19 +3,9 @@ from datetime import datetime
 from bson import ObjectId
 from typing import Dict
 
-
 class Message(BaseModel):
     text: str
     timeStamp: datetime
-
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Test message!",
-                "timeStamp": "2023-09-19T16:38:45.906Z",
-            }
-        }
-    }
 
     @field_validator("text")
     def whitespace(value):

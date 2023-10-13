@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-from models.models import Message, Answer
+from models.models import  Answer, Message
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -12,6 +12,7 @@ from bson.errors import InvalidId
 from dotenv import dotenv_values
 import pandas as pd
 import os
+from pydantic import BaseModel
 
 print("main file called")
 ##Issues with importing modules from openai/embedding possibly due to naming package openai?
@@ -43,18 +44,15 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
-
 @app.post("/chat")
 async def send_message(message: Message):
     now = datetime.now()
 
-    print(message.timeStamp)
-
     if message.text == "":
         raise HTTPException(status_code=400, detail="No message sent!")
-
+    
     """ Deal with different timezones? """
-    if message.timeStamp > datetime.astimezone(now):
+    if message.timeStamp.astimezone() > now.astimezone():
         raise HTTPException(
             status_code=400,
             detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
