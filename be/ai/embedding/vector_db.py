@@ -2,7 +2,7 @@ import pinecone
 import ast
 
 # Initialize Pinecone
-pinecone.init(api_key="be10d569-c6d0-4f54-ae02-9cd4ee77bb04", environment="gcp-starter")
+pinecone.init(api_key="", environment="gcp-starter")
 
 index = pinecone.Index("ask-uts")
 
