@@ -36,6 +36,7 @@ class Answer(BaseModel):
     message: Message
     timeStamp: datetime
     answer: str = Field(default="I don't know!")
+    similarity: float = Field(default=0)
     isURL: bool = Field(default=False)
     answerURL: str = Field(default="")
 

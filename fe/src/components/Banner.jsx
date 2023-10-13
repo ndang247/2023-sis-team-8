@@ -8,6 +8,7 @@ export const Banner = ({ colorBgContainer }) => {
       style={{
         padding: 0,
         background: colorBgContainer,
+        backgroundColor: "#123286"
       }}
     />
   );
