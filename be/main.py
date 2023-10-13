@@ -2,6 +2,7 @@ from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from fastapi.middleware.cors import CORSMiddleware
 from models.models import Message, Answer
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
@@ -10,10 +11,12 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import pandas as pd
+import os
 
+print("main file called")
 ##Issues with importing modules from openai/embedding possibly due to naming package openai?
 ##Making a copy to be root as a temporary fix
-from embedding_search_prototype import embedding_search
+from ai.embedding.embedding_search_function import embedding_search
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
@@ -22,6 +25,15 @@ DB_PASSWORD = secrets["DB_PASSWORD"]
 uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
+
+# Allow requests from all origins, change this in a production setup
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to a specific origin in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["askUTSApp"]

@@ -2,10 +2,9 @@ import pinecone
 import ast
 
 # Initialize Pinecone
-pinecone.init(api_key="sk-INSERTYOURKEYHERE", environment="gcp-starter")
+pinecone.init(api_key="be10d569-c6d0-4f54-ae02-9cd4ee77bb04", environment="gcp-starter")
 
 index = pinecone.Index("ask-uts")
-
 
 def insert(df):
     # Convert the string representation of the embedding into a vector

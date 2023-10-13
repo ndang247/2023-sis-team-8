@@ -1,15 +1,13 @@
 import openai
 import pandas as pd
 import os
-import vector_db
-
-
+from .vector_db import insert as vector_insert
 # Embedding Function, there are many ways to go about it but it seems there are also alot of bugs
 embedding_model = "text-embedding-ada-002"
 
 
 # Insert your OpenAI key here
-openai.api_key = "sk-INSERTYOURKEYHERE"
+openai.api_key = "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"
 
 
 # Embedding function
@@ -19,21 +17,23 @@ def generate_embedding(text, model=embedding_model):
     result = openai.Embedding.create(input=[text], model=model)
     return result["data"][0]["embedding"]
 
+import os
 
-cwd = os.getcwd()
-# Read in data
-df = pd.read_csv(cwd + "/data/" + "web_scraped_data.csv")
-
+#read csv
+script_directory = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(script_directory, "data")
+csv_file_path = os.path.join(data_folder, "web_scraped_data.csv")
+df = pd.read_csv(csv_file_path)
 
 # Making new coulum with embedded items
 df["embedding"] = df["Content"].apply(lambda x: generate_embedding(x, embedding_model))
 
 
 # Exporting the embedded data into a new csv
-df.to_csv(cwd + "/data/" + "web_scraped_data_embedding.csv")
+df.to_csv(script_directory + "/data/" + "web_scraped_data_embedding.csv")
 
 print(df)
 
 # Upserting the data into the Pinecone index
-df = pd.read_csv(cwd + "/data/" + "web_scraped_data_embedding.csv")
-vector_db.insert(df)
+df = pd.read_csv(script_directory +  "/data/" + "web_scraped_data_embedding.csv")
+vector_insert(df)

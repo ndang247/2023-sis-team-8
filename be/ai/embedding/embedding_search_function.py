@@ -2,8 +2,7 @@ import openai
 import pandas as pd
 import numpy as np
 import os
-from . import vector_db
-
+from .vector_db import get_matches
 from openai.embeddings_utils import get_embedding
 
 # from openai.embeddings_utils import cosine_similarity
@@ -12,11 +11,13 @@ from openai.embeddings_utils import get_embedding
 embedding_model = "text-embedding-ada-002"
 
 # Insert your OpenAI key here
-openai.api_key = "sk-INSERTYOURKEYHERE"
+openai.api_key = "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"
 
-# Read in data
-cwd = os.getcwd()
-df = pd.read_csv(cwd + "/data/" + "web_scraped_data_embedding.csv")
+#read csv
+script_directory = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(script_directory, "data")
+csv_file_path = os.path.join(data_folder, "web_scraped_data.csv")
+df = pd.read_csv(csv_file_path)
 
 
 def embedding_search(prompt):
@@ -29,7 +30,7 @@ def embedding_search(prompt):
     prompt_vector = get_embedding(prompt, engine=embedding_model)
 
     # Retrieve from Pinecone
-    res = vector_db.get_matches(prompt_vector)
+    res = get_matches(prompt_vector)
 
     return res
 

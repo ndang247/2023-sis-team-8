@@ -16,3 +16,5 @@ unstructured
 python-dotenv
 httpx
 pytest
+pinecone-client
+openai[embeddings]

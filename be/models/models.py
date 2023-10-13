@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
 from bson import ObjectId
+from typing import Dict
 
 
 class Message(BaseModel):
@@ -21,12 +22,13 @@ class Message(BaseModel):
         return value.strip()
 
     @model_validator(mode="before")
-    def check_text_present(cls, values):
-        if not "text" in values:
+    def check_text_present(cls, values: Dict):
+        if "text" not in values:
             raise ValueError("Text was not provided!")
-        if not "timeStamp" in values:
+        if "timeStamp" not in values:
             raise ValueError("Time stamp was not provided!")
         return values
+
 
     class ConfigDict:
         validate_assignment = True

@@ -4,10 +4,9 @@ import requests
 import os
 import csv
 
-unique_keyphrases = ["engineering", "tecchnology", "courses"]
+unique_keyphrases = ["engineering", "technology", "courses"]
 
 def get_html_from_url(url):
-    output_filepath = os.path.join(output_folder + ".txt")
     response = requests.get(url)
     html_content = response.content
     return html_content
