@@ -4,19 +4,23 @@ import numpy as np
 import os
 from .vector_db import get_matches
 from openai.embeddings_utils import get_embedding
+from dotenv import dotenv_values
 
 # from openai.embeddings_utils import cosine_similarity
+
+secrets = dotenv_values(".env")
+OPENAI_API_KEY = secrets["OPENAI_API_KEY"]
 
 # Embedding function, there are many ways to go about it but it seems there are also alot of bugs
 embedding_model = "text-embedding-ada-002"
 
 # Insert your OpenAI key here
-openai.api_key = "sk-INSERTYOURKEYHERE"
+openai.api_key = OPENAI_API_KEY
 
 # Read csv
 script_directory = os.path.dirname(os.path.abspath(__file__))
 data_folder = os.path.join(script_directory, "data")
-csv_file_path = os.path.join(data_folder, "web_scraped_data.csv")
+csv_file_path = os.path.join(data_folder, "web_scraped_data_embedding.csv")
 df = pd.read_csv(csv_file_path)
 
 
