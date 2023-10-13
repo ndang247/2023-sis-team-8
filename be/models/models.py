@@ -3,6 +3,7 @@ from datetime import datetime
 from bson import ObjectId
 from typing import Dict
 
+
 class Message(BaseModel):
     text: str
     timeStamp: datetime
@@ -18,7 +19,6 @@ class Message(BaseModel):
         if "timeStamp" not in values:
             raise ValueError("Time stamp was not provided!")
         return values
-
 
     class ConfigDict:
         validate_assignment = True

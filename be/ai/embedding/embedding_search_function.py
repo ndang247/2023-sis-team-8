@@ -11,9 +11,9 @@ from openai.embeddings_utils import get_embedding
 embedding_model = "text-embedding-ada-002"
 
 # Insert your OpenAI key here
-openai.api_key = ""
+openai.api_key = "sk-INSERTYOURKEYHERE"
 
-#read csv
+# Read csv
 script_directory = os.path.dirname(os.path.abspath(__file__))
 data_folder = os.path.join(script_directory, "data")
 csv_file_path = os.path.join(data_folder, "web_scraped_data.csv")

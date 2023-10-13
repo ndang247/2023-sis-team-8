@@ -45,13 +45,14 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
+
 @app.post("/chat")
 async def send_message(message: Message):
     now = datetime.now()
 
     if message.text == "":
         raise HTTPException(status_code=400, detail="No message sent!")
-    
+
     """ Deal with different timezones? """
     if message.timeStamp.astimezone() > now.astimezone():
         raise HTTPException(
@@ -72,10 +73,11 @@ async def send_message(message: Message):
 
     try:
         df = embedding_search(message.text)
-        text = df['text'].iloc[0]
-        sim = df['similarities'].loc[0]
-        answer = Answer(message=message, timeStamp=datetime.now(),
-                        answer=text, similarity=sim)
+        text = df["text"].iloc[0]
+        sim = df["similarities"].loc[0]
+        answer = Answer(
+            message=message, timeStamp=datetime.now(), answer=text, similarity=sim
+        )
     except Exception as e:
         print(e)
         answer = Answer(message=message, timeStamp=datetime.now())
@@ -83,7 +85,7 @@ async def send_message(message: Message):
     return answer
 
 
-@app.get("/chat_read/")
+@app.get("/chat_read")
 async def read_message(message_id: Union[str, None] = None):
     filter = {"_id": 0}
 
@@ -99,22 +101,21 @@ async def read_message(message_id: Union[str, None] = None):
             else:
                 # no results found
                 raise HTTPException(
-                    status_code=404,
-                    detail=f"'{message_id}' does not exist!"
+                    status_code=404, detail=f"'{message_id}' does not exist!"
                 )
         except InvalidId as e:
             # invalid id provided
             print(e)
             raise HTTPException(
                 status_code=400,
-                detail=f"'{message_id}' is not a valid id, it must be a 12-byte input or a 24-character hex string"
+                detail=f"'{message_id}' is not a valid id, it must be a 12-byte input or a 24-character hex string",
             )
     else:
         # return all results in collection
         result = list(col.find({}))
         # ObjectId to str
         for document in result:
-            document['_id'] = str(document['_id'])
+            document["_id"] = str(document["_id"])
         return result
 
 
@@ -123,10 +124,9 @@ async def save_response(answer: Answer):
     answer = jsonable_encoder(answer)
     result = col.insert_one(answer)
     created_message = col.find_one({"_id": result.inserted_id})
-    created_message['_id'] = str(created_message['_id'])
-    return JSONResponse(
-        status_code=201, content=created_message
-    )
+    created_message["_id"] = str(created_message["_id"])
+    return JSONResponse(status_code=201, content=created_message)
+
 
 try:
     client.admin.command("ping")
