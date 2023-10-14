@@ -17,13 +17,11 @@ from ai.embedding import embedding_search_function
 
 
 print("main file called")
-##Issues with importing modules from openai/embedding possibly due to naming package openai?
-##Making a copy to be root as a temporary fix
-#from ai.embedding.embedding_search_function import embedding_search
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
 DB_PASSWORD = secrets["DB_PASSWORD"]
+OPENAI_API_KEY = secrets["OPENAI_API_KEY"]
 
 uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
@@ -47,7 +45,7 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
-@app.post("/embedded_search")
+@app.get("/embedded_search")
 async def search(prompt: str):
     print(prompt)
     res = embedding_search_function.embedding_search(prompt)
@@ -78,12 +76,8 @@ async def send_message(message: Message):
     #         + " characters provided!",
     #     )
 
-  
-    # df = embedding_search(message.text)
-    # text = df['text'].iloc[0]
-    # sim = df['similarities'].loc[0]
     #try to get chatbot working
-    openai.api_key = ''
+    openai.api_key = OPENAI_API_KEY
     messages = [ {"role": "system", "content":  
                 "You are a intelligent assistant."} ] 
     if message.text: 
