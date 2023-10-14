@@ -21,10 +21,11 @@ openai.api_key = OPENAI_API_KEY
 script_directory = os.path.dirname(os.path.abspath(__file__))
 data_folder = os.path.join(script_directory, "data")
 csv_file_path = os.path.join(data_folder, "web_scraped_data_embedding.csv")
-df = pd.read_csv(csv_file_path)
+
 
 
 def embedding_search(prompt):
+    df = pd.read_csv(csv_file_path)
     # Convert data into python code and convert it into a numpy array to perform calculations
     df["embedding"] = df["embedding"].apply(eval).apply(np.array)
 

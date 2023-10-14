@@ -11,9 +11,10 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import openai
-import pandas as pd
-import os
-from pydantic import BaseModel
+import pandas
+
+from ai.embedding import embedding_search_function
+
 
 print("main file called")
 ##Issues with importing modules from openai/embedding possibly due to naming package openai?
@@ -46,6 +47,11 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
+@app.post("/embedded_search")
+async def search(prompt: str):
+    print(prompt)
+    res = embedding_search_function.embedding_search(prompt)
+    return res.to_dict()
 
 @app.post("/chat")
 async def send_message(message: Message):
