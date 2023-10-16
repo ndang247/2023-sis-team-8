@@ -8,7 +8,7 @@ embedding_model = "text-embedding-ada-002"
 
 
 # Insert your OpenAI key here
-openai.api_key = "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"
+openai.api_key = "sk-INSERTYOURKEYHERE"
 
 
 # Embedding function
