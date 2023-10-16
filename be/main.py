@@ -17,8 +17,6 @@ from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
 from ai.chatbot.chatbot_completion import get_response
 
-print("main file called")
-
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
 DB_PASSWORD = secrets["DB_PASSWORD"]
@@ -50,12 +48,11 @@ async def read_root():
 async def search(prompt: str):
     print(prompt)
     res = embedding_search_function.embedding_search(prompt)
+    print(res.to_dict()['matches'][0]['score'])
     return res.to_dict()
 
 @app.post("/chat")
 async def send_message(message: Message):
-    # now = datetime.now()
-
     # """ Deal with different timezones? """
     # if message.timeStamp.astimezone() > now.astimezone():
     #     raise HTTPException(
@@ -84,7 +81,12 @@ async def send_message(message: Message):
 
         response = get_response(augmented_query)
         answer = Answer(
-            message=message, timeStamp=datetime.now(), answer=response, similarity=0
+            message=message, 
+            timeStamp=datetime.now(), 
+            answer=response, 
+            similarity=res.to_dict()['matches'][0]['score'], 
+            isURL=True, 
+            answerURL=res.to_dict()['matches'][0]['id']
         )
         return answer
     else:
