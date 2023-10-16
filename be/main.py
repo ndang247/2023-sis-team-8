@@ -11,10 +11,11 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import openai
-import pandas
+import pandas as pd 
 
 from ai.embedding import embedding_search_function
-
+from ai.embedding.embedding_search_function import embedding_search
+from ai.chatbot.chatbot_completion import get_response
 
 print("main file called")
 
@@ -53,11 +54,8 @@ async def search(prompt: str):
 
 @app.post("/chat")
 async def send_message(message: Message):
-    now = datetime.now()
+    # now = datetime.now()
 
-    if message.text == "":
-        raise HTTPException(status_code=400, detail="No message sent!")
-    
     # """ Deal with different timezones? """
     # if message.timeStamp.astimezone() > now.astimezone():
     #     raise HTTPException(
@@ -68,33 +66,29 @@ async def send_message(message: Message):
     #         ),
     #     )
 
-    # if len(message.text) > 1000:
-    #     raise HTTPException(
-    #         status_code=400,
-    #         detail="Message character limit exceeded: "
-    #         + str(len(message.text))
-    #         + " characters provided!",
-    #     )
+    if len(message.text) > 1000:
+        raise HTTPException(
+            status_code=400,
+            detail="Message character limit exceeded: "
+            + str(len(message.text))
+            + " characters provided!",
+        )
 
-    #try to get chatbot working
-    openai.api_key = OPENAI_API_KEY
-    messages = [ {"role": "system", "content":  
-                "You are a intelligent assistant."} ] 
-    if message.text: 
-        messages.append( 
-            {"role": "user", "content": message.text}, 
-        ) 
-        print(messages)
-        chat = openai.ChatCompletion.create( 
-            model="gpt-3.5-turbo", messages=messages 
-        ) 
-    reply = chat.choices[0].message.content 
-    print("chatgpt: ", reply)
-    messages.append({"role": "assistant", "content": reply}) 
-    
-    answer = Answer(message=message, timeStamp=datetime.now(),
-                    answer=reply, similarity=0)
-    return answer
+    if message.text:
+        res = embedding_search(message.text)
+
+        # Get list of retrieved content
+        contexts = [item["metadata"]["content"] for item in res["matches"]]
+        augmented_query = "\n\n---\n\n".join(contexts) + "\n\n-----\n\n" + message.text
+        print(augmented_query)
+
+        response = get_response(augmented_query)
+        answer = Answer(
+            message=message, timeStamp=datetime.now(), answer=response, similarity=0
+        )
+        return answer
+    else:
+        raise HTTPException(status_code=400, detail="No message sent!")
 
 
 @app.get("/chat_read")

@@ -27,7 +27,7 @@ csv_file_path = os.path.join(data_folder, "web_scraped_data_embedding.csv")
 def embedding_search(prompt):
     df = pd.read_csv(csv_file_path)
     # Convert data into python code and convert it into a numpy array to perform calculations
-    df["embedding"] = df["embedding"].apply(eval).apply(np.array)
+    # df["embedding"] = df["embedding"].apply(eval).apply(np.array)
 
     # Getting input from user and converting it to a vector
     # prompt = input("Enter a search term: ")
