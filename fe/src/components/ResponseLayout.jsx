@@ -39,7 +39,7 @@ try {
   };
   return (
     <div className="response-container">
-      <div className="responsee-messages">
+      <div className="response-messages">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -49,7 +49,7 @@ try {
           </div>
         ))}
       </div>
-      <form className="chatbot-input-form" onSubmit={handleSubmit}>
+      <form className="response-input-form" onSubmit={handleSubmit}>
         <input
           type="text"
           value={input}
