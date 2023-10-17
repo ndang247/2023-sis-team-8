@@ -1,67 +1,64 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "@css/responseLayoutStyles.css";
-import { Typewriter } from "@components";
-import { sendPrompt } from "@api";
+import axios from 'axios';
 
-export const ResponseLayout = () => {
-  const inputRef = useRef(null);
-  const [editValue, setEditValue] = useState("");
-  const [chatMessages, setChatMessages] = useState([]);
+const ResponseLayout = () => {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([]);
 
-  const handleEditChange = (e) => {
-    setEditValue(e.target.value);
-  };
+const chatWithGPT3 = async (userInput) => {
+    const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `INSERT API KEY`
+    };
 
-  const handleKeyDown = async (e) => {
-    if (e.key === "Enter" && !inputRef.current.readOnly) {
-      try {
-        inputRef.current.readOnly = true;
-        await sendPrompt({
-          text: editValue,
-        });
-        console.log({
-          text: editValue,
-        });
-        setChatMessages([...chatMessages, editValue]); // Add user message to chat
-      } catch (error) {
-        console.log(error);
-      }
+    const data = {
+      prompt: userInput,
+      max_tokens: 150
+    };
+try {
+      const response = await axios.post(apiEndpoint, data, { headers });
+      return response.data.choices[0].text.trim();
+    } catch (error) {
+      console.error('Unable to reach the API:', error.message);
+      return '';
     }
   };
-
-  const handleEditPrompt = (id, e) => {
-    // Focus on input
-    inputRef.current.focus();
-    inputRef.current.readOnly = false;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    const userMessage = { text: input, user: true };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    const aiMessage = { text: '...', user: false };
+    setMessages((prevMessages) => [...prevMessages, aiMessage]);
+    const response = await chatWithGPT3(input);
+    const newAiMessage = { text: response, user: false };
+    setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
+    setInput('');
   };
-
   return (
-    <>
-      <div className="flex-grow flex flex-col items-center justify-start w-[100%]">
-        <div className="flex justify-center relative mt-[1.5rem] w-[100%]">
-          <input
-            id="edit-prompt-1"
-            className="rounded-full border-solid border-[#a6a6a6] border-[1px] w-[100%] h-[55px] relative overflow-hidden mb-[1rem] text-left text-[#718096] font-medium text-[14px] leading-[100%] pl-[20px] lg:w-[900px]"
-            ref={inputRef}
-            value={editValue}
-            onChange={handleEditChange}
-            onKeyDown={handleKeyDown}
-            readOnly
-          ></input>
-
-          <button
-            className="relative flex items-center justify-center w-[50px] h-[50px] overflow-hidden bottom-0"
-            onClick={() => handleEditPrompt("edit-prompt-1")}
+    <div className="response-container">
+      <div className="responsee-messages">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`message ${message.user ? 'user-message' : 'ai-message'}`}
           >
-            {/* Add your SVG icon or image here */}
-          </button>
-        </div>
-        <div className="w-[100%] relative overflow-hidden mb-8 pl-5 lg:w-[940px]">
-          {chatMessages.map((message, index) => (
-            <p key={index}>{message}</p>
-          ))}
-        </div>
+            {message.text}
+          </div>
+        ))}
       </div>
-    </>
+      <form className="chatbot-input-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your message..."
+        />
+        <button type="submit">Send</button>
+      </form>
+    </div>
   );
 };
+export default ResponseLayout;
