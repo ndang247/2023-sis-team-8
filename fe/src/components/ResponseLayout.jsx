@@ -1,7 +1,3 @@
-List
-
-
-
 import React, { useState, useRef } from "react";
 import "@css/responseLayoutStyles.css";
 import { Typewriter } from "@components";
