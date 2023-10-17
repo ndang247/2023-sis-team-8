@@ -79,14 +79,20 @@ async def send_message(message: Message):
         augmented_query = "\n\n---\n\n".join(contexts) + "\n\n-----\n\n" + message.text
         print(augmented_query)
 
+        sim = []
+        url = []
+        for matches in res.to_dict()['matches']:
+            sim.append(matches['score'])
+            url.append(matches['id'])
+            
         response = get_response(augmented_query)
         answer = Answer(
             message=message, 
             timeStamp=datetime.now(), 
             answer=response, 
-            similarity=res.to_dict()['matches'][0]['score'], 
+            similarity=sim, 
             isURL=True, 
-            answerURL=res.to_dict()['matches'][0]['id']
+            answerURL=url
         )
         return answer
     else:

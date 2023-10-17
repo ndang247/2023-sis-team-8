@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
 from bson import ObjectId
-from typing import Dict
+from typing import Dict, List
 
 
 class Message(BaseModel):
@@ -28,9 +28,9 @@ class Answer(BaseModel):
     message: Message
     timeStamp: datetime
     answer: str = Field(default="I don't know!")
-    similarity: float = Field(default=0)
+    similarity: List[float] = Field(default=[0])
     isURL: bool = Field(default=False)
-    answerURL: str = Field(default="")
+    answerURL: List[str] = Field(default=[""])
 
     model_config = {
         "json_schema_extra": {
