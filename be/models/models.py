@@ -1,30 +1,22 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
 from bson import ObjectId
+from typing import Dict
 
 
 class Message(BaseModel):
     text: str
     timeStamp: datetime
 
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "text": "Test message!",
-                "timeStamp": "2023-09-19T16:38:45.906Z",
-            }
-        }
-    }
-
     @field_validator("text")
     def whitespace(value):
         return value.strip()
 
     @model_validator(mode="before")
-    def check_text_present(cls, values):
-        if not "text" in values:
+    def check_text_present(cls, values: Dict):
+        if "text" not in values:
             raise ValueError("Text was not provided!")
-        if not "timeStamp" in values:
+        if "timeStamp" not in values:
             raise ValueError("Time stamp was not provided!")
         return values
 
@@ -36,6 +28,7 @@ class Answer(BaseModel):
     message: Message
     timeStamp: datetime
     answer: str = Field(default="I don't know!")
+    similarity: float = Field(default=0)
     isURL: bool = Field(default=False)
     answerURL: str = Field(default="")
 

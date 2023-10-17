@@ -1,36 +1,54 @@
 from bs4 import BeautifulSoup
 import requests
 
-num_pages = 13
-base_url = "https://www.uts.edu.au/sitemap.xml?page={0}"
-sitemap_urls = []
-
-for i in range(1, num_pages + 1):
-    url = base_url.format(i)
-    sitemap_urls.append(url)
+base_url = "https://www.uts.edu.au/sitemap.xml"
 
 
 def get_urls_from_sitemap(url):
     response = requests.get(url)
     xml_content = response.text
     soup = BeautifulSoup(xml_content, "xml")
-    urls = [url.text.strip() for url in soup.find_all("loc")]
+    urls = [loc.text.strip() for loc in soup.find_all("loc")]
     return urls
 
 
-sorted_sublinks = []
+sitemap_urls = [base_url]
+sitemap_urls += get_urls_from_sitemap(base_url)
 
-unique_keyphrase = "courses"
+num_pages = 13
 
-for sitemap_url in sitemap_urls:
-    sublinks = get_urls_from_sitemap(sitemap_url)
+for i in range(2, num_pages + 1):
+    page_url = f"https://www.uts.edu.au/sitemap/page-{i}.xml"
+    sitemap_urls += get_urls_from_sitemap(page_url)
 
-    filtered_links = sorted(
-        [sublink for sublink in sublinks if unique_keyphrase in sublink]
-    )
+keywords_to_filter = [
+    "Bachelor of Engineering (Honours) C09066",
+    "Bachelor of Engineering (Honours) Diploma in Professional Engineering Practice C09067",
+    "Bachelor of Engineering Science C10066",
+    "Bachelor of Technology C10408",
+    "Bachelor of Engineering (Honours) Bachelor of Business C09070",
+    "Bachelor of Engineering (Honours) Bachelor of Business Diploma in Professional Engineering Practice C09071",
+    "Bachelor of Engineering (Honours) Bachelor of Science C09072",
+    "Bachelor of Engineering (Honours) Bachelor of Science Diploma in Professional Engineering Practice C09073",
+    "Bachelor of Engineering (Honours) Bachelor of Medical Science C09074",
+    "Bachelor of Engineering (Honours) Bachelor of Medical Science Diploma in Professional Engineering Practice C09075",
+    "Bachelor of Engineering (Honours) Bachelor of Creative Intelligence and Innovation C09076",
+    "Bachelor of Engineering Science Bachelor of Laws (Honours) C09087",
+    "Bachelor of Engineering (Honours) Bachelor of International Studies C09123",
+    "Bachelor of Engineering (Honours) Bachelor of International Studies Diploma in Professional Engineering Practice C09124",
+    "Bachelor of Engineering (Honours) Bachelor of International Studies (Honours) C09147",
+    "Bachelor of Engineering (Honours) Bachelor of International Studies (Honours) Diploma in Professional Engineering Practice C09148",
+    "Bachelor of Engineering Science Bachelor of Laws C10136",
+]
 
-    sorted_sublinks.extend(filtered_links)
+filtered_links = []
 
-with open("sitemap_filtered.txt", "w") as file:
-    for sublink in sorted_sublinks:
+for url in sitemap_urls:
+    if any(keyword in url for keyword in keywords_to_filter):
+        filtered_links.append(url)
+
+filtered_links = sorted(list(set(filtered_links)))
+
+with open("filtered_url.txt", "w") as file:
+    for sublink in filtered_links:
         file.write(sublink + "\n")
