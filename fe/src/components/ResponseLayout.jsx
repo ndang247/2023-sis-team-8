@@ -25,8 +25,8 @@ try {
       return '';
     }
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (res) => {
+    res.preventDefault();
     if (!input.trim()) return;
     const userMessage = { text: input, user: true };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
@@ -53,7 +53,7 @@ try {
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(res) => setInput(res.target.value)}
           placeholder="Type your message..."
         />
         <button type="submit">Send</button>
