@@ -25,18 +25,7 @@ try {
       return '';
     }
   };
-  const handleSubmit = async (res) => {
-    res.preventDefault();
-    if (!input.trim()) return;
-    const userMessage = { text: input, user: true };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-    const aiMessage = { text: '...', user: false };
-    setMessages((prevMessages) => [...prevMessages, aiMessage]);
-    const response = await chatWithGPT3(input);
-    const newAiMessage = { text: response, user: false };
-    setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
-    setInput('');
-  };
+  
   return (
     <div className="response-container">
       <div className="response-messages">
