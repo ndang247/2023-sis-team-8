@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import "@css/userChatLayoutStyles.css";
-import { sendPrompt } from "@api";
+import { sendPrompt } from '../api';
 
-import { ResponseLayout } from "@components";
+import { Response } from "@components";
 
 export const UserChatLayout = () => {
   const submitBtnRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(true);
   const [inputValue, setInputValue] = useState("");
+  const [apiResponse, setApiResponse] = useState(null); // Add this state variable
 
   useEffect(() => {
     if (inputValue.length > 0) {
@@ -28,16 +29,16 @@ export const UserChatLayout = () => {
     });
   };
 
-  const handleSubmit = () => {
-    sendPrompt({
+  const handleSubmit = async () => {
+    const response = await sendPrompt({
       text: inputValue,
     });
+    setApiResponse(response); // Store the API response in the state variable
   };
 
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen">
-        <ResponseLayout />
 
         <div className="flex-grow flex flex-row items-center justify-end w-[100%] lg:mb-[1rem] lg:flex-col">
           <input
@@ -58,6 +59,7 @@ export const UserChatLayout = () => {
               Submit
             </div>
           </button>
+          <Response apiResponse={apiResponse} />
         </div>
       </div>
     </>
