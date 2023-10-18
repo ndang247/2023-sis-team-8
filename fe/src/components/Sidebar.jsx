@@ -29,7 +29,9 @@ export const Sidebar = () => {
       style={{ backgroundColor: "#123286" }}
     >
        <div className="demo-logo-vertical">
+       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">
         <img src="uts-logo.png" alt="Logo" style={{ width: '60%', height: 'auto', paddingLeft: '10px', paddingTop: '15px' }} />
+        </a>      
       </div>
       <Input
         prefix={<SearchOutlined style={{ color: 'rgba(118, 118, 118, 0.5)' }} />} 
@@ -63,7 +65,9 @@ export const Sidebar = () => {
       <Menu>
         <br></br>
         <Menu.Item key="1" icon={<UserOutlined />}>
+          <a href="https://login.uts.edu.au/" target="_blank">
           Login
+          </a>
         </Menu.Item>
       </Menu>
       <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px' }}>To speak to someone, please call 1300 ASK UTS</div>
