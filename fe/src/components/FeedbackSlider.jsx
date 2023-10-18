@@ -1,20 +1,21 @@
-import React, { useState, useMemo } from 'react';
-import { FrownOutlined, SmileOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import { LikeOutlined, DislikeOutlined } from '@ant-design/icons';
 import { Slider } from 'antd';
 
-const FeedbackSlider = ({ max, min }) => {
+const IconSlider = (props) => {
+  const { max, min } = props;
   const [value, setValue] = useState(0);
-
-  const mid = useMemo(() => Number(((max - min) / 2).toFixed(5)), [max, min]);
-  const isValueGreaterThanMid = value >= mid;
-
+  const mid = Number(((max - min) / 2).toFixed(5));
+  const preColorCls = value >= mid ? '' : 'icon-wrapper-active';
+  const nextColorCls = value >= mid ? 'icon-wrapper-active' : '';
+  
   return (
     <div className="icon-wrapper">
-      <FrownOutlined className={isValueGreaterThanMid ? '' : 'icon-wrapper-active'} />
-      <Slider max={max} min={min} onChange={setValue} value={value} />
-      <SmileOutlined className={isValueGreaterThanMid ? 'icon-wrapper-active' : ''} />
+      <LikeOutlined className={preColorCls} />
+      <Slider {...props} onChange={setValue} value={value} />
+      <DislikeOutlined className={nextColorCls} />
     </div>
   );
 };
 
-export default FeedbackSlider;
+export const FeedbackSlider = (props) => <IconSlider min={0} max={5} {...props} />;
