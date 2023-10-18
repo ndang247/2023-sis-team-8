@@ -11,18 +11,16 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import openai
-import pandas as pd
-import os
-from pydantic import BaseModel
+import pandas as pd 
+
+from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
 from ai.chatbot.chatbot_completion import get_response
-
-# Issues with importing modules from openai/embedding possibly due to naming package openai?
-# Making a copy to be root as a temporary fix
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
 DB_PASSWORD = secrets["DB_PASSWORD"]
+OPENAI_API_KEY = secrets["OPENAI_API_KEY"]
 
 uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
@@ -46,11 +44,15 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
+@app.get("/embedded_search")
+async def search(prompt: str):
+    print(prompt)
+    res = embedding_search_function.embedding_search(prompt)
+    print(res.to_dict()['matches'][0]['score'])
+    return res.to_dict()
 
 @app.post("/chat")
 async def send_message(message: Message):
-    # now = datetime.now()
-
     # """ Deal with different timezones? """
     # if message.timeStamp.astimezone() > now.astimezone():
     #     raise HTTPException(
@@ -77,9 +79,20 @@ async def send_message(message: Message):
         augmented_query = "\n\n---\n\n".join(contexts) + "\n\n-----\n\n" + message.text
         print(augmented_query)
 
+        sim = []
+        url = []
+        for matches in res.to_dict()['matches']:
+            sim.append(matches['score'])
+            url.append(matches['id'])
+            
         response = get_response(augmented_query)
         answer = Answer(
-            message=message, timeStamp=datetime.now(), answer=response, similarity=0
+            message=message, 
+            timeStamp=datetime.now(), 
+            answer=response, 
+            similarity=sim, 
+            isURL=True, 
+            answerURL=url
         )
         return answer
     else:
