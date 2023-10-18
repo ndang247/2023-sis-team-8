@@ -12,3 +12,5 @@ services:
     build:
       context: ./be # Path to your Python application directory
       dockerfile: Dockerfile-be
+    ports:
+      - "80:80"

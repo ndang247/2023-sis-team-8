@@ -2,13 +2,23 @@ from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
+from fastapi.middleware.cors import CORSMiddleware
 from models.models import Message, Answer
-from pydantic import BaseModel
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from bson import json_util
+from bson import ObjectId
+from bson.errors import InvalidId
 from dotenv import dotenv_values
+import openai
+import pandas as pd
+import os
+from pydantic import BaseModel
+from ai.embedding.embedding_search_function import embedding_search
+from ai.chatbot.chatbot_completion import get_response
+
+# Issues with importing modules from openai/embedding possibly due to naming package openai?
+# Making a copy to be root as a temporary fix
 
 secrets = dotenv_values(".env")
 DB_USER = secrets["DB_USER"]
@@ -17,6 +27,15 @@ DB_PASSWORD = secrets["DB_PASSWORD"]
 uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@cluster0.nbptbsx.mongodb.net/?retryWrites=true&w=majority"
 
 app = FastAPI()
+
+# Allow requests from all origins, change this in a production setup
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to a specific origin in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 client = MongoClient(uri, server_api=ServerApi("1"))
 db = client["askUTSApp"]
@@ -30,22 +49,17 @@ async def read_root():
 
 @app.post("/chat")
 async def send_message(message: Message):
-    now = datetime.now()
+    # now = datetime.now()
 
-    print(message.timeStamp)
-
-    if message.text == "":
-        raise HTTPException(status_code=400, detail="No message sent!")
-
-    """ Deal with different timezones? """
-    if message.timeStamp > datetime.astimezone(now):
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
-                message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
-                now.strftime("%Y-%m-%d %H:%M:%S.%f"),
-            ),
-        )
+    # """ Deal with different timezones? """
+    # if message.timeStamp.astimezone() > now.astimezone():
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
+    #             message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
+    #             now.strftime("%Y-%m-%d %H:%M:%S.%f"),
+    #         ),
+    #     )
 
     if len(message.text) > 1000:
         raise HTTPException(
@@ -55,9 +69,55 @@ async def send_message(message: Message):
             + " characters provided!",
         )
 
-    answer = Answer(message=message, timeStamp=datetime.now())
+    if message.text:
+        res = embedding_search(message.text)
 
-    return answer
+        # Get list of retrieved content
+        contexts = [item["metadata"]["content"] for item in res["matches"]]
+        augmented_query = "\n\n---\n\n".join(contexts) + "\n\n-----\n\n" + message.text
+        print(augmented_query)
+
+        response = get_response(augmented_query)
+        answer = Answer(
+            message=message, timeStamp=datetime.now(), answer=response, similarity=0
+        )
+        return answer
+    else:
+        raise HTTPException(status_code=400, detail="No message sent!")
+
+
+@app.get("/chat_read")
+async def read_message(message_id: Union[str, None] = None):
+    filter = {"_id": 0}
+
+    if message_id:
+        # return individual response if message_id param provided
+        try:
+            objInstance = ObjectId(message_id)
+            query = {"_id": objInstance}
+            result = col.find_one(query, filter)
+
+            if result is not None:
+                return result
+            else:
+                # no results found
+                raise HTTPException(
+                    status_code=404, detail=f"'{message_id}' does not exist!"
+                )
+        except InvalidId as e:
+            # invalid id provided
+            print(e)
+            raise HTTPException(
+                status_code=400,
+                detail=f"'{message_id}' is not a valid id, it must be a 12-byte input or a 24-character hex string",
+            )
+    else:
+        # return all results in collection
+        result = list(col.find({}))
+        # ObjectId to str
+        for document in result:
+            document["_id"] = str(document["_id"])
+        return result
 
 
 @app.post("/chat_save")
@@ -65,11 +125,8 @@ async def save_response(answer: Answer):
     answer = jsonable_encoder(answer)
     result = col.insert_one(answer)
     created_message = col.find_one({"_id": result.inserted_id})
-    # TODO change to cleaner custom JSON serializer
-    return JSONResponse(
-        status_code=201, content=json_util.dumps(created_message, default=str)
-    )
-    # json_util.dumps(created_message, default=str)
+    created_message["_id"] = str(created_message["_id"])
+    return JSONResponse(status_code=201, content=created_message)
 
 
 try:
