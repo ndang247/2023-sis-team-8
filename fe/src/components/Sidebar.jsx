@@ -3,6 +3,8 @@ import {
   ContainerOutlined,
   UserOutlined,
   SearchOutlined,
+  BarsOutlined,
+  PhoneOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Input } from "antd";
 const { Sider } = Layout;
@@ -27,7 +29,9 @@ export const Sidebar = () => {
       style={{ backgroundColor: "#123286" }}
     >
        <div className="demo-logo-vertical">
+       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">
         <img src="uts-logo.png" alt="Logo" style={{ width: '60%', height: 'auto', paddingLeft: '10px', paddingTop: '15px' }} />
+        </a>      
       </div>
       <Input
         prefix={<SearchOutlined style={{ color: 'rgba(118, 118, 118, 0.5)' }} />} 
@@ -49,12 +53,21 @@ export const Sidebar = () => {
             </span>
           }
         >
-          <Menu.Item key="1">Convo 1</Menu.Item>
-          <Menu.Item key="2">Convo 2</Menu.Item>
-          <Menu.Item key="3">Convo 3</Menu.Item>
+          <Menu.Item key="1"> <BarsOutlined /> Convo 1</Menu.Item>
+          <Menu.Item key="2"> <BarsOutlined /> Convo 2</Menu.Item>
+          <Menu.Item key="3"> <BarsOutlined /> Convo 3</Menu.Item>
         </SubMenu>
-        <Menu.Item key="2" icon={<UserOutlined />}>
+        <Menu.Item key="2" icon={<PhoneOutlined />}>
           Contact Us
+        </Menu.Item>
+      </Menu>
+      <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px', paddingBottom: '25px' }}>To save this conversation, please login</div>
+      <Menu>
+        <br></br>
+        <Menu.Item key="1" icon={<UserOutlined />}>
+          <a href="https://login.uts.edu.au/" target="_blank">
+          Login
+          </a>
         </Menu.Item>
       </Menu>
       <div style={{ textAlign: 'center', color: 'white', paddingLeft: '10px', paddingRight: '10px', paddingTop: '25px' }}>To speak to someone, please call 1300 ASK UTS</div>
