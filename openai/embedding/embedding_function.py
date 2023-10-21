@@ -10,7 +10,7 @@ embedding_model = "text-embedding-ada-002"  # Embedding Function, there are many
 openai.api_key = "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"  # insert your OpenAI key here
 
 cwd = os.getcwd()
-df = pd.read_csv(cwd + "/openai/embedding/data/" + "manuallyFormatted_UTS_Data.csv")  # read in data
+df = pd.read_csv(cwd + "/openai/embedding/data/" + "UpdatedmanuallyFormatted_UTS_Data.csv")  # read in data
 
 # print(get_embedding("grape", engine='text-embedding-ada-002')) #This works and prints out an embedded vector
 
@@ -35,7 +35,7 @@ df["embedding"] = df["Content"].apply(
 
 
 df.to_csv(
-    cwd + "/openai/embedding/data/" + "embedded_manuallyFormatted_UTS_Data.csv"
+    cwd + "/openai/embedding/data/" + "embedded_UpdatedmanuallyFormatted_UTS_Data.csv"
 )  # exporting the embedded data into a new csv
 
 # df['embedding'] = df['text'].apply(lambda x: x.upper())

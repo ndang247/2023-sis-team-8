@@ -1,0 +1,108 @@
+﻿This document outlines the scope of what data is currently being provided as context.
+
+
+Information on the general Engineering Undergraduate Degree:
+
+
+1. Information Regarding Undergraduate Engineering
+   1. General Description of the course and different versions 
+   2. E.g. 5 year honours, 4 year honours, 3 year international student version
+
+
+2. Course structure
+   1. Information on course structure
+   2. E.g. (i) core program; (ii) Engineering Practice Program; (iii) field of practice (major); (iv) electives; and (v) Capstone Project.
+
+
+3. Core program
+   1. Description of core program
+
+
+4. Engineering Practice Program
+   1. Description of core engineering practice program
+
+
+5. STM90993 Professional Engineering Practice Program subjects
+   1. List of core engineering practice program
+
+
+6. Electives *
+   1. Description of electives
+
+
+7. Bachelor of Engineering (Honours) Diploma in Professional Engineering Practice
+   1. Description of Diploma in Professional Engineering Practice
+   2. Overview
+   3. Course Aims
+   4. Career Options
+   5. Course intended learning outcomes
+   6. Admission requirements
+      1. General Info
+      2. Local Students
+      3. International Students
+   7. Pathway Course
+   8. Inherent (essential) requirements
+   9. Assumed Knowledge
+   10. Recognition of prior learning
+   11. Course duration and attendance
+   12. Course structure
+   13. Industrial training/professional practice
+   14. Course Completion Requirements
+   15. Course Program
+
+
+8. Capstone Project *
+   1. Description of Capstone Project
+
+
+9. Recognition of prior learning
+   1. Description of Recognition of prior learning
+
+
+10. Majors
+   1. Description of core engineering practice program
+
+
+11. Software Engineering
+   1. Description
+   2. Course Structure
+
+
+12. 33130 Mathematics 1 
+13. 48230 Introduction to Engineering Projects 
+14.  31269 Business Requirements Modelling
+15.  41039 Programming 1
+16. 33230 Mathematics 2
+17. 48024 Programming 2
+18. 31282 Systems Testing and Quality Management
+19. 31271 Database Fundamentals
+20. 41035 Professional Practice Preparation 1
+21. 68037 Physical Modelling
+22. 31251 Data Structures and Algorithms
+23. 31257 Information System Development Methodologies
+24. SMJ10157 Information Security (Info) 
+25. SMJ10088 Network Systems Software (Info)  
+26. SMJ03067 Real-time Systems (Software Engineering) (Info)
+27. CBK91234 Technical subject choice (Software Engineering) (Info)
+28. SMJ02066 Computer Graphics and Animation (Info)
+29. SMJ02065 Data Analytics (Info)
+30. SMJ02067 Interaction Design (Info) 
+31. 41036 Professional Experience 1
+32. 41037 Work Integrated Learning 1
+33. 41200 Engineering Project Appraisal
+34. 41113 Software Development Studio
+35. 41038 Professional Practice Review 1 3cp
+36. 41201 Designing Sustainable Engineering Projects
+37. 41128 Software Analysis Studio
+38. 48433 Software Architecture
+39. 41045 Professional Practice Preparation 2
+40. 41202 Professional Engineering Communication
+41. Spring session
+42. 41046 Professional Experience 2
+43. 41047 Work Integrated Learning 2
+44. 41029 Engineering Research Preparation
+45. 41048 Professional Practice Review 2
+46. 41203 Collaboration in Complex Projects
+47. 41030 Engineering Capstone
+48. 41129 Software Innovation Studio
+49. 41127 Software Design Studio 6cp
