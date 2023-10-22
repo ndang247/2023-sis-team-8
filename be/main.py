@@ -11,7 +11,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import openai
-import pandas as pd 
+import pandas as pd
 
 from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
@@ -44,12 +44,14 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
+
 @app.get("/embedded_search")
 async def search(prompt: str):
     print(prompt)
     res = embedding_search_function.embedding_search(prompt)
-    print(res.to_dict()['matches'][0]['score'])
+    print(res.to_dict()["matches"][0]["score"])
     return res.to_dict()
+
 
 @app.post("/chat")
 async def send_message(message: Message):
@@ -81,18 +83,18 @@ async def send_message(message: Message):
 
         sim = []
         url = []
-        for matches in res.to_dict()['matches']:
-            sim.append(matches['score'])
-            url.append(matches['id'])
-            
+        for matches in res.to_dict()["matches"]:
+            sim.append(matches["score"])
+            url.append(matches["metadata"]["URL"])
+
         response = get_response(augmented_query)
         answer = Answer(
-            message=message, 
-            timeStamp=datetime.now(), 
-            answer=response, 
-            similarity=sim, 
-            isURL=True, 
-            answerURL=url
+            message=message,
+            timeStamp=datetime.now(),
+            answer=response,
+            similarity=sim,
+            isURL=True,
+            answerURL=url,
         )
         return answer
     else:
