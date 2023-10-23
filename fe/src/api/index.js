@@ -43,3 +43,31 @@ export const sendPrompt = async (prompt) => {
     }
   }
 };
+
+export const sendSearchQuery = async (prompt) => {
+  console.log("Sending prompt:", prompt);
+
+  try {
+    const fullPrompt = {
+      ...prompt,
+      top_k: 3
+    };
+    
+    const response = await api.post("/embedded_search", fullPrompt, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log("Res received:", response.status, response.statusText);
+ 
+    if (response.data) {
+      console.log("Res data", response.data);
+    } else {
+      console.warn("There was no reponse data returned.");
+    }
+    return response.data;
+  } catch (error) {
+    console.error("This is the error", error.message);
+  }
+};

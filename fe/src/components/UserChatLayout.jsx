@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import "@css/userChatLayoutStyles.css";
-import { sendPrompt } from '../api';
+import { sendPrompt, sendSearchQuery } from '../api';
 
 import { Response } from "@components";
+import { SearchResponse } from "@components";
 
 export const UserChatLayout = () => {
   const submitBtnRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [apiResponse, setApiResponse] = useState(null); // Add this state variable
+  const [searchApiResponse, setSearchApiResponse] = useState(null); // Add this state variable
 
   useEffect(() => {
     if (inputValue.length > 0) {
@@ -33,9 +35,14 @@ export const UserChatLayout = () => {
     const response = await sendPrompt({
       text: inputValue,
     });
+    
+    const searchResponse = await sendSearchQuery({
+      text: inputValue,
+    });
     setApiResponse(response); // Store the API response in the state variable
+    setSearchApiResponse(searchResponse)
   };
-
+  
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen">
@@ -59,7 +66,9 @@ export const UserChatLayout = () => {
               Submit
             </div>
           </button>
+
           <Response apiResponse={apiResponse} />
+          <SearchResponse apiResponse={searchApiResponse}/>
         </div>
       </div>
     </>
