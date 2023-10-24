@@ -29,9 +29,9 @@ export const Sidebar = () => {
       style={{ backgroundColor: "#123286" }}
     >
        <div className="demo-logo-vertical">
-       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">
+       <a href="https://www.uts.edu.au/" target="_blank">
         <img src="uts-logo.png" alt="Logo" style={{ width: '60%', height: 'auto', paddingLeft: '10px', paddingTop: '15px' }} />
-        </a>      
+        </a>
       </div>
       <Input
         prefix={<SearchOutlined style={{ color: 'rgba(118, 118, 118, 0.5)' }} />} 
