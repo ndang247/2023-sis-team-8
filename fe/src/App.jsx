@@ -1,5 +1,5 @@
 import React from "react";
-import { UserChatLayout, Sidebar, Banner, Bottom } from "@components";
+import { UserChatLayout, Sidebar, Banner, Bottom, FeedbackSlider } from "@components";
 import { Layout, theme } from "antd";
 const { Content } = Layout;
 
@@ -23,6 +23,7 @@ const App = () => {
           }}
         >
           <UserChatLayout />
+          <FeedbackSlider min={0} max={10} />
         </Content>
         <Bottom />
       </Layout>
