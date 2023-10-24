@@ -26,7 +26,7 @@ const Typewriter = ({ text, delay }) => {
   );
 };
 
-export const Response = ({ apiResponse, searchApiResponse }) => {
+export const Response = ({ apiResponse, searchApiResponse, isDisabled }) => {
   const matches = searchApiResponse ? searchApiResponse.data.matches : [];
     // Check if there are matches to display
     const hasMatches = matches.length > 0;
@@ -43,8 +43,14 @@ export const Response = ({ apiResponse, searchApiResponse }) => {
 
   const answer = apiResponse ? apiResponse.answer : null;
 
+  const greyOutStyle = isDisabled
+  ? {
+      opacity: 0.7,
+    }
+  : {};
+
   return (
-    <div className="response-container">
+    <div style={greyOutStyle} className="response-container">
       {answer ? (
         <div className="response-data text-left"> {/* Add text-center class */}
           {answer}

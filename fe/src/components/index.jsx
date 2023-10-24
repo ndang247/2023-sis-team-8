@@ -4,5 +4,4 @@ import { Response } from "@components/Response";
 import { Bottom } from "@components/Bottom";
 import { Typewriter } from "@components/Typewriter";
 import { Banner } from "@components/Banner";
-import { SearchResponse } from "@components/SearchResponse";
-export { UserChatLayout, Sidebar, Bottom, Typewriter, Banner, Response, SearchResponse};
+export { UserChatLayout, Sidebar, Bottom, Typewriter, Banner, Response};
