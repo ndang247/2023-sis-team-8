@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,8 +10,6 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
-import openai
-import pandas as pd
 
 from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
@@ -55,16 +53,6 @@ async def search(prompt: str):
 
 @app.post("/chat")
 async def send_message(message: Message):
-    # """ Deal with different timezones? """
-    # if message.timeStamp.astimezone() > now.astimezone():
-    #     raise HTTPException(
-    #         status_code=400,
-    #         detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
-    #             message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
-    #             now.strftime("%Y-%m-%d %H:%M:%S.%f"),
-    #         ),
-    #     )
-
     if len(message.text) > 1000:
         raise HTTPException(
             status_code=400,
