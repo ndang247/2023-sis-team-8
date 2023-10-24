@@ -1,6 +1,4 @@
 import json
-import tiktoken  # For token counting
-import numpy as np
 from collections import defaultdict
 
 # Script to test if training file is formatted correctly for OpenAI function

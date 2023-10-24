@@ -3,15 +3,15 @@ import "@css/userChatLayoutStyles.css";
 import { sendPrompt, sendSearchQuery } from '../api';
 
 import { Response } from "@components";
-import { SearchResponse } from "@components";
 
 export const UserChatLayout = () => {
   const submitBtnRef = useRef(null);
-  const searchBtnRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [apiResponse, setApiResponse] = useState(null); // Add this state variable
-  const [searchApiResponse, setSearchApiResponse] = useState(null); // Add this state variable
+  const [searchApiResponse, setSearchApiResponse] = useState(null); // Add this state variable]
+  const [prevApiResponse, setPrevApiResponse] = useState(null); // Add this state variable
+  const [prevSearchApiResponse, setPrevSearchApiResponse] = useState(null); // Add this state variable]
 
   useEffect(() => {
     if (inputValue.length > 0) {
@@ -36,25 +36,30 @@ export const UserChatLayout = () => {
   };
 
   const handleSubmit = async () => {
-    const searchResponse = await sendSearchQuery({
-      text: inputValue,
-    });
-    const response = await sendPrompt({
-      text: inputValue,
-    });
+    setPrevApiResponse(apiResponse)
+    setPrevSearchApiResponse(searchApiResponse)
+
+    setApiResponse(null)
+    setSearchApiResponse(null)
+
+    const [searchResponse, response] = await Promise.all([
+      sendSearchQuery({ text: inputValue }),
+      sendPrompt({ text: inputValue }),
+    ]);
 
     setSearchApiResponse(searchResponse)
     setApiResponse(response)
   };
 
-  
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen">
+          <div className="rounded-lg bg-white p-3 shadow-md">
+            <Response apiResponse={prevApiResponse} searchApiResponse={prevSearchApiResponse} isDisabled={true}/>
+          </div>
 
           <div className="rounded-lg bg-white p-3 shadow-md">
-            <Response apiResponse={apiResponse} />
-            <SearchResponse apiResponse={searchApiResponse}/>
+            <Response apiResponse={apiResponse} searchApiResponse={searchApiResponse} isDisabled={false} />
           </div>
 
         <div className="flex-grow flex flex-row items-center justify-end w-[100%] lg:mb-[1rem] lg:flex-col">

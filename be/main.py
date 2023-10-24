@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,8 +10,6 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
-import openai
-import pandas as pd
 
 from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
@@ -46,25 +44,12 @@ async def read_root():
 
 @app.post("/embedded_search")
 async def search(prompt: Search):
-    print(prompt)
     res = embedding_search_function.embedding_search(prompt.text, prompt.top_k)
-    print("SUCCESSFULLY CALLED SEARCH FUNCTION WITH THIS RESULT: ")
-    print(res.to_dict())
     return res.to_dict()
 
 
 @app.post("/chat")
 async def send_message(message: Message):
-    # """ Deal with different timezones? """
-    # if message.timeStamp.astimezone() > now.astimezone():
-    #     raise HTTPException(
-    #         status_code=400,
-    #         detail="Invalid date! Provided timestamp: {0} is greater than current timestamp: {1}".format(
-    #             message.timeStamp.strftime("%Y-%m-%d %H:%M:%S.%f %Z"),
-    #             now.strftime("%Y-%m-%d %H:%M:%S.%f"),
-    #         ),
-    #     )
-
     if len(message.text) > 1000:
         raise HTTPException(
             status_code=400,
@@ -74,7 +59,7 @@ async def send_message(message: Message):
         )
 
     if message.text:
-        top_k=1
+        top_k=2
         res = embedding_search(message.text, top_k=top_k)
 
         # Define a function to truncate text to a maximum number of characters
@@ -87,7 +72,7 @@ async def send_message(message: Message):
 
         # Get list of retrieved content
         contexts = [item["metadata"]["content"] for item in res["matches"]]
-        shortened_contexts = [truncate_to_max_characters(context, max_characters=2000) for context in contexts]
+        shortened_contexts = [truncate_to_max_characters(context, max_characters=5000) for context in contexts]
         augmented_query = "\n\n---\n\n".join(shortened_contexts) + "\n\n-----\n\n" + message.text
 
         sim = []

@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
-from bson import ObjectId
 from typing import Dict, List
 
 class Search(BaseModel):
