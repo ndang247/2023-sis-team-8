@@ -12,10 +12,10 @@ secrets = dotenv_values(".env")
 openai.api_key = secrets["OPENAI_API_KEY"]
 
 
-def embedding_search(prompt):
+def embedding_search(prompt, top_k):
     prompt_vector = get_embedding(prompt, engine=embedding_model)
 
     # Retrieve from Pinecone
-    res = get_matches(prompt_vector)
+    res = get_matches(prompt_vector, top_k)
 
     return res

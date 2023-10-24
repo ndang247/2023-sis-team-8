@@ -28,7 +28,7 @@ def insert(df):
     index.upsert(payload)
 
 
-def get_matches(query_embedding):
+def get_matches(query_embedding, top_k):
     # Query the index
-    results = index.query(query_embedding, top_k=2, include_metadata=True)
+    results = index.query(query_embedding, top_k=top_k, include_metadata=True)
     return results

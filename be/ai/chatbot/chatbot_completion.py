@@ -19,20 +19,17 @@ messages = [
     }
 ]
 
-
 def reset_messages():
+    global messages
     messages = [
         {
             "role": "system",
             "content": primer,
         }
     ]
-    return messages
-
 
 def chat_update(role, content):
     messages.append({"role": role, "content": content})
-
 
 def get_response(augmented_query):
     chat_update("user", augmented_query)
@@ -40,7 +37,8 @@ def get_response(augmented_query):
 
     reply = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages)
     response = reply.choices[0].message.content
+
+    reset_messages()
     print("chatgpt: ", response)
 
-    chat_update("assistant", response)
     return response

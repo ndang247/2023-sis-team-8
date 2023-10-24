@@ -2,6 +2,9 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 from datetime import datetime
 from typing import Dict, List
 
+class Search(BaseModel):
+    text: str
+    top_k: int
 
 class Message(BaseModel):
     text: str
