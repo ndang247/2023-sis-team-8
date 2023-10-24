@@ -19,6 +19,7 @@ messages = [
     }
 ]
 
+
 def reset_messages():
     global messages
     messages = [
@@ -28,8 +29,10 @@ def reset_messages():
         }
     ]
 
+
 def chat_update(role, content):
     messages.append({"role": role, "content": content})
+
 
 def get_response(augmented_query):
     chat_update("user", augmented_query)

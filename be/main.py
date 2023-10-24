@@ -42,6 +42,7 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
+
 @app.post("/embedded_search")
 async def search(prompt: Search):
     res = embedding_search_function.embedding_search(prompt.text, prompt.top_k)
@@ -59,7 +60,7 @@ async def send_message(message: Message):
         )
 
     if message.text:
-        top_k=2
+        top_k = 2
         res = embedding_search(message.text, top_k=top_k)
 
         # Define a function to truncate text to a maximum number of characters
@@ -72,8 +73,13 @@ async def send_message(message: Message):
 
         # Get list of retrieved content
         contexts = [item["metadata"]["content"] for item in res["matches"]]
-        shortened_contexts = [truncate_to_max_characters(context, max_characters=5000) for context in contexts]
-        augmented_query = "\n\n---\n\n".join(shortened_contexts) + "\n\n-----\n\n" + message.text
+        shortened_contexts = [
+            truncate_to_max_characters(context, max_characters=5000)
+            for context in contexts
+        ]
+        augmented_query = (
+            "\n\n---\n\n".join(shortened_contexts) + "\n\n-----\n\n" + message.text
+        )
 
         sim = []
         url = []
