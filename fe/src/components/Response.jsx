@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Loading } from "@components/Loading";
 
 const Typewriter = ({ text, delay }) => {
   const [displayText, setDisplayText] = useState('');
@@ -56,7 +57,9 @@ export const Response = ({ apiResponse, searchApiResponse, isDisabled }) => {
           {answer}
         </div>
       ) : (
-        <div className="no-response-message">No API response received yet.</div>
+        <div className="no-response-message">
+          <Loading />
+        </div>
       )}
       <div className="container">
       {hasMatches && (
