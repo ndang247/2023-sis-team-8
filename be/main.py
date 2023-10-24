@@ -11,7 +11,7 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from dotenv import dotenv_values
 import openai
-import pandas as pd 
+import pandas as pd
 
 from ai.embedding import embedding_search_function
 from ai.embedding.embedding_search_function import embedding_search
@@ -52,6 +52,7 @@ async def search(prompt: Search):
     print(res.to_dict())
     return res.to_dict()
 
+
 @app.post("/chat")
 async def send_message(message: Message):
     # """ Deal with different timezones? """
@@ -91,18 +92,18 @@ async def send_message(message: Message):
 
         sim = []
         url = []
-        for matches in res.to_dict()['matches']:
-            sim.append(matches['score'])
-            url.append(matches['id'])
-            
+        for matches in res.to_dict()["matches"]:
+            sim.append(matches["score"])
+            url.append(matches["metadata"]["URL"])
+
         response = get_response(augmented_query)
         answer = Answer(
-            message=message, 
-            timeStamp=datetime.now(), 
-            answer=response, 
-            similarity=sim, 
-            isURL=True, 
-            answerURL=url
+            message=message,
+            timeStamp=datetime.now(),
+            answer=response,
+            similarity=sim,
+            isURL=True,
+            answerURL=url,
         )
         return answer
     else:

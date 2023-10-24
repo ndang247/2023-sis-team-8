@@ -1,6 +1,7 @@
 import pinecone
 import ast
 from dotenv import dotenv_values
+import uuid
 
 secrets = dotenv_values(".env")
 PINECONE_API_KEY = secrets["PINECONE_API_KEY"]
@@ -19,9 +20,9 @@ def insert(df):
     payload = []
     for _, row in df.iterrows():
         obj = {
-            "id": row["URL"],
+            "id": str(uuid.uuid4()),
             "values": row["embedding"],
-            "metadata": {"content": row["Content"]},
+            "metadata": {"content": row["Content"], "URL": row["URL"]},
         }
         payload.append(obj)
 
