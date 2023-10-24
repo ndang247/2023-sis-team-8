@@ -58,15 +58,9 @@ export const sendSearchQuery = async (prompt) => {
         "Content-Type": "application/json",
       },
     });
+    console.log("This is the response:", response)
 
-    console.log("Res received:", response.status, response.statusText);
- 
-    if (response.data) {
-      console.log("Res data", response.data);
-    } else {
-      console.warn("There was no reponse data returned.");
-    }
-    return response.data;
+    return response;
   } catch (error) {
     console.error("This is the error", error.message);
   }

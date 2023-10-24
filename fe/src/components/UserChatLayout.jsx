@@ -7,6 +7,7 @@ import { SearchResponse } from "@components";
 
 export const UserChatLayout = () => {
   const submitBtnRef = useRef(null);
+  const searchBtnRef = useRef(null);
   const [isDisabled, setIsDisabled] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [apiResponse, setApiResponse] = useState(null); // Add this state variable
@@ -17,10 +18,13 @@ export const UserChatLayout = () => {
       setIsDisabled(false);
       // Remove opacity-40 class from button
       submitBtnRef.current.classList.remove("opacity-40");
+      //searchBtnRef.current.classList.remove("opacity-40");
     } else {
       setIsDisabled(true);
       // Add opacity-40 class to button
       submitBtnRef.current.classList.add("opacity-40");
+      //searchBtnRef.current.classList.add("opacity-40");
+
     }
   }, [inputValue]);
 
@@ -32,20 +36,26 @@ export const UserChatLayout = () => {
   };
 
   const handleSubmit = async () => {
-    const response = await sendPrompt({
-      text: inputValue,
-    });
-    
     const searchResponse = await sendSearchQuery({
       text: inputValue,
     });
-    setApiResponse(response); // Store the API response in the state variable
+    const response = await sendPrompt({
+      text: inputValue,
+    });
+
     setSearchApiResponse(searchResponse)
+    setApiResponse(response)
   };
+
   
   return (
     <>
       <div className="box-border m-auto flex flex-col min-h-screen">
+
+          <div className="rounded-lg bg-white p-3 shadow-md">
+            <Response apiResponse={apiResponse} />
+            <SearchResponse apiResponse={searchApiResponse}/>
+          </div>
 
         <div className="flex-grow flex flex-row items-center justify-end w-[100%] lg:mb-[1rem] lg:flex-col">
           <input
@@ -55,20 +65,25 @@ export const UserChatLayout = () => {
             onChange={handleInputChange}
           ></input>
 
-          <button
-            id="submit-button"
-            className="relative flex items-center justify-center w-[120px] h-[50px] rounded-full opacity-40 overflow-hidden bottom-0 bg-gradient-to-r from-blue-600 to-[#0f4beb] shadow-lg"
-            ref={submitBtnRef}
-            disabled={isDisabled}
-            onClick={handleSubmit}
-          >
-            <div className="text-white text-left font-semibold text-[14px] leading-[16px] relative w-[50px] h-5">
-              Submit
-            </div>
-          </button>
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <button
+              id="submit-button"
+              className="relative flex items-center justify-center w-[200px] h-[50px] rounded-full opacity-40 overflow-hidden bg-gradient-to-r shadow-lg"
+              style={{ backgroundColor: '#0d41d1' }} // UTS blue color code
+              ref={submitBtnRef}
+              disabled={isDisabled}
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              <div className="text-white text-left font-semibold text-[14px] leading-[16px] relative w-[150px] h-5">
+                Ask AskUTS ChatBot
+              </div>
+            </button>
+          </div>
 
-          <Response apiResponse={apiResponse} />
-          <SearchResponse apiResponse={searchApiResponse}/>
+        </div>
         </div>
       </div>
     </>
