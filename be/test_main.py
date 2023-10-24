@@ -3,12 +3,10 @@ from main import app
 
 client = TestClient(app)
 
-
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
-
 
 def test_chat_valid_message():
     response = client.post(
@@ -25,19 +23,16 @@ def test_chat_remove_whitespace():
     assert response.status_code == 200
     assert response.json()["message"]["text"] == "no white space!"
 
-
 def test_chat_invalid_text():
     response = client.post("/chat/", json={"text": True, "timeStamp": 444})
     assert response.status_code == 422
     assert response.json()["detail"][0]["msg"] == "Input should be a valid string"
-
 
 def test_chat_missing_text():
     response = client.post("/chat/", json={"not a text": "test", "timeStamp": 444})
     assert response.status_code == 422
     assert response.json()["detail"][0]["type"] == "value_error"
     assert response.json()["detail"][0]["msg"] == "Value error, Text was not provided!"
-
 
 def test_chat_missing_timeStamp():
     response = client.post("/chat/", json={"text": "test", "not a timeStamp": 444})
@@ -48,11 +43,37 @@ def test_chat_missing_timeStamp():
         == "Value error, Time stamp was not provided!"
     )
 
+def test_embedded_search_invalid_top_k():
+    response = client.post(
+        "/embedded_search", 
+        json={
+            "text": "What courses are offered at UTS?", 
+            "top_k": "two"
+            }
+        )
+    assert response.status_code == 422
+
 def test_embedded_search_valid():
-    url = "/embedded_search/?prompt=I%27m%20looking%20for%20financial%20support%20scholarships?"
-    response = client.get(url)
+    response = client.post(
+        "/embedded_search", 
+        json={
+            "text": "What courses are offered at UTS?", 
+            "top_k": 1
+            }
+        )
     assert response.status_code == 200
-    assert len(response.json()["matches"]) != 0
+    assert len(response.json()["matches"]) == 1
+
+def test_embedded_search_multiple_top_k():
+    response = client.post(
+        "/embedded_search", 
+        json={
+            "text": "What engineering courses are offered at UTS?", 
+            "top_k": 3
+            }
+        )
+    assert response.status_code == 200
+    assert len(response.json()["matches"]) == 3
 
 def test_chat_read_all_valid():
     response = client.get("/chat_read")
