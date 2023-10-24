@@ -1,6 +1,5 @@
 import openai
 import pandas as pd
-import numpy as np
 import os
 
 from openai.embeddings_utils import get_embedding
