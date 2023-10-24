@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-from models.models import Message, Answer
+from models.models import Message, Answer, Search
 from datetime import datetime
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -44,12 +44,12 @@ col = db["messages"]
 async def read_root():
     return {"Hello": "World"}
 
-
-@app.get("/embedded_search")
-async def search(prompt: str):
+@app.post("/embedded_search")
+async def search(prompt: Search):
     print(prompt)
-    res = embedding_search_function.embedding_search(prompt)
-    print(res.to_dict()["matches"][0]["score"])
+    res = embedding_search_function.embedding_search(prompt.text, prompt.top_k)
+    print("SUCCESSFULLY CALLED SEARCH FUNCTION WITH THIS RESULT: ")
+    print(res.to_dict())
     return res.to_dict()
 
 
@@ -74,12 +74,21 @@ async def send_message(message: Message):
         )
 
     if message.text:
-        res = embedding_search(message.text)
+        top_k=1
+        res = embedding_search(message.text, top_k=top_k)
+
+        # Define a function to truncate text to a maximum number of characters
+        def truncate_to_max_characters(text, max_characters):
+            if len(text) > max_characters:
+                truncated_text = text[:max_characters]
+            else:
+                truncated_text = text
+            return truncated_text
 
         # Get list of retrieved content
         contexts = [item["metadata"]["content"] for item in res["matches"]]
-        augmented_query = "\n\n---\n\n".join(contexts) + "\n\n-----\n\n" + message.text
-        print(augmented_query)
+        shortened_contexts = [truncate_to_max_characters(context, max_characters=2000) for context in contexts]
+        augmented_query = "\n\n---\n\n".join(shortened_contexts) + "\n\n-----\n\n" + message.text
 
         sim = []
         url = []
