@@ -24,7 +24,7 @@ csv_file_path = os.path.join(data_folder, "web_scraped_data_embedding.csv")
 
 
 
-def embedding_search(prompt):
+def embedding_search(prompt, top_k):
     df = pd.read_csv(csv_file_path)
     # Convert data into python code and convert it into a numpy array to perform calculations
     # df["embedding"] = df["embedding"].apply(eval).apply(np.array)
@@ -35,7 +35,7 @@ def embedding_search(prompt):
     prompt_vector = get_embedding(prompt, engine=embedding_model)
 
     # Retrieve from Pinecone
-    res = get_matches(prompt_vector)
+    res = get_matches(prompt_vector, top_k)
 
     return res
 
