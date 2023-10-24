@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: "http://localhost",
 });
 
 export const sendPrompt = async (prompt) => {
@@ -41,5 +41,27 @@ export const sendPrompt = async (prompt) => {
     if (error.code) {
       console.error("Network error:", error.code);
     }
+  }
+};
+
+export const sendSearchQuery = async (prompt) => {
+  console.log("Sending prompt:", prompt);
+
+  try {
+    const fullPrompt = {
+      ...prompt,
+      top_k: 3
+    };
+    
+    const response = await api.post("/embedded_search", fullPrompt, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("This is the response:", response)
+
+    return response;
+  } catch (error) {
+    console.error("This is the error", error.message);
   }
 };
