@@ -23,7 +23,7 @@ const App = () => {
           }}
         >
           <UserChatLayout />
-          <FeedbackSlider min={0} max={10} />
+          {/* <FeedbackSlider min={0} max={10} /> */}
         </Content>
         <Bottom />
       </Layout>
