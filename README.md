@@ -1,4 +1,4 @@
-# SIS-Project
+# An SIS Project (UTS AI Assistance)
 
 ## How to use Docker Compose to run both the front-end and back-end at the same time
 
